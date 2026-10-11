@@ -62,21 +62,21 @@
         Find the <span class="highlight">Mystery Country</span>
       </h1>
       <p class="hero-subhead">
-        Paste your game clues below. The tool calculates the exact intersection and gives you the list of green countries in the correct zone.
+        Instant solver supporting all 3 game difficulty outputs: <strong>🟢 Easy</strong> (Name, Dist & Dir), <strong>🟡 Medium</strong> (Flag, Dist & Dir), and <strong>🔴 Hard</strong> (Flag & Dist only + Borders).
       </p>
 
       <div class="hero-features">
         <div class="feature-pill">
           <span class="feature-check">✓</span>
-          <span>100% Automatic</span>
+          <span>🟢 Easy: Name + Dist + Dir</span>
         </div>
         <div class="feature-pill">
           <span class="feature-check">✓</span>
-          <span>Instant Distance & Direction</span>
+          <span>🟡 Medium: Flag + Dist + Dir</span>
         </div>
         <div class="feature-pill">
           <span class="feature-check">✓</span>
-          <span>Eliminates Wrong Countries</span>
+          <span>🔴 Hard: Flag + Dist only & Borders</span>
         </div>
       </div>
     </div>
@@ -87,7 +87,7 @@
         <textarea 
           id="paste-input" 
           class="clean-textarea" 
-          placeholder="Paste clues here, for example:&#10;🇯🇵 Japan — 12,874 km ⬅️ W (🧊 FREEZING) [@hvu]&#10;🇺🇸 United States — 11,917 km ➡️ E (🧊 FREEZING)"
+          placeholder="Paste game clues here (all 3 difficulty outputs supported):&#10;🟢 Easy: 🇯🇵 Japan — 12,874 km ⬅️ W (🧊 FREEZING) [@hvu]&#10;🟡 Medium: ly Libya — 2,004 km ⬆️ N (🟧 HOT) [@bradar]&#10;🔴 Hard: TD — 5,196 km (🟦 COLD) [@hvu]&#10;🤝 Borders: SE — 431 km The mystery country is bordering this country!"
         ></textarea>
 
         <button id="btn-parse-clues" class="btn-main-action">
@@ -97,15 +97,15 @@
       </div>
 
       <div class="try-examples-row">
-        <span class="try-label">Try an example:</span>
-        <button class="sample-chip btn-preset" data-preset="prompt_example">
-          🇯🇵 Japan + 🇺🇸 US
+        <span class="try-label">Try game difficulty:</span>
+        <button class="sample-chip btn-preset" data-preset="easy_mode">
+          🟢 Easy Mode
         </button>
-        <button class="sample-chip btn-preset" data-preset="add_third_clue">
-          + 🇿🇦 South Africa (Lock)
+        <button class="sample-chip btn-preset" data-preset="medium_mode">
+          🟡 Medium Mode
         </button>
-        <button class="sample-chip btn-preset" data-preset="europe_mystery">
-          Europe Clues
+        <button class="sample-chip btn-preset" data-preset="hard_mode">
+          🔴 Hard Mode
         </button>
       </div>
     </div>

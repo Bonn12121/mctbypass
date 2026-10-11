@@ -1,5 +1,5 @@
-// Comprehensive World Countries Dataset with Coordinates
-window.WORLD_COUNTRIES = [
+// Comprehensive World Countries Dataset with Coordinates & Borders
+const WORLD_COUNTRIES = [
   {
     "name": "Afghanistan",
     "iso2": "AF",
@@ -10,7 +10,23 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Southern Asia",
     "emoji": "🇦🇫",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "IR",
+      "PK",
+      "TM",
+      "UZ",
+      "TJ",
+      "CN"
+    ],
+    "borders_iso3": [
+      "IRN",
+      "PAK",
+      "TKM",
+      "UZB",
+      "TJK",
+      "CHN"
+    ]
   },
   {
     "name": "Aland Islands",
@@ -22,7 +38,9 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Northern Europe",
     "emoji": "🇦🇽",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Albania",
@@ -34,7 +52,19 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇦🇱",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "ME",
+      "GR",
+      "MK",
+      "XK"
+    ],
+    "borders_iso3": [
+      "MNE",
+      "GRC",
+      "MKD",
+      "UNK"
+    ]
   },
   {
     "name": "Algeria",
@@ -46,7 +76,25 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Northern Africa",
     "emoji": "🇩🇿",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "TN",
+      "LY",
+      "NE",
+      "EH",
+      "MR",
+      "ML",
+      "MA"
+    ],
+    "borders_iso3": [
+      "TUN",
+      "LBY",
+      "NER",
+      "ESH",
+      "MRT",
+      "MLI",
+      "MAR"
+    ]
   },
   {
     "name": "American Samoa",
@@ -58,7 +106,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Polynesia",
     "emoji": "🇦🇸",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Andorra",
@@ -70,7 +120,15 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇦🇩",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "FR",
+      "ES"
+    ],
+    "borders_iso3": [
+      "FRA",
+      "ESP"
+    ]
   },
   {
     "name": "Angola",
@@ -82,7 +140,19 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Middle Africa",
     "emoji": "🇦🇴",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CG",
+      "CD",
+      "ZM",
+      "NA"
+    ],
+    "borders_iso3": [
+      "COG",
+      "COD",
+      "ZMB",
+      "NAM"
+    ]
   },
   {
     "name": "Anguilla",
@@ -94,7 +164,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇦🇮",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Antarctica",
@@ -106,7 +178,9 @@ window.WORLD_COUNTRIES = [
     "region": "Polar",
     "subregion": "",
     "emoji": "🇦🇶",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Antigua and Barbuda",
@@ -118,7 +192,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇦🇬",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Argentina",
@@ -130,7 +206,21 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "South America",
     "emoji": "🇦🇷",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BO",
+      "BR",
+      "CL",
+      "PY",
+      "UY"
+    ],
+    "borders_iso3": [
+      "BOL",
+      "BRA",
+      "CHL",
+      "PRY",
+      "URY"
+    ]
   },
   {
     "name": "Armenia",
@@ -142,7 +232,19 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Western Asia",
     "emoji": "🇦🇲",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AZ",
+      "GE",
+      "IR",
+      "TR"
+    ],
+    "borders_iso3": [
+      "AZE",
+      "GEO",
+      "IRN",
+      "TUR"
+    ]
   },
   {
     "name": "Aruba",
@@ -154,7 +256,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇦🇼",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Australia",
@@ -166,7 +270,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Australia and New Zealand",
     "emoji": "🇦🇺",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Austria",
@@ -178,7 +284,27 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Western Europe",
     "emoji": "🇦🇹",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CZ",
+      "DE",
+      "HU",
+      "IT",
+      "LI",
+      "SK",
+      "SI",
+      "CH"
+    ],
+    "borders_iso3": [
+      "CZE",
+      "DEU",
+      "HUN",
+      "ITA",
+      "LIE",
+      "SVK",
+      "SVN",
+      "CHE"
+    ]
   },
   {
     "name": "Azerbaijan",
@@ -190,7 +316,21 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Western Asia",
     "emoji": "🇦🇿",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AM",
+      "GE",
+      "IR",
+      "RU",
+      "TR"
+    ],
+    "borders_iso3": [
+      "ARM",
+      "GEO",
+      "IRN",
+      "RUS",
+      "TUR"
+    ]
   },
   {
     "name": "Bahrain",
@@ -202,7 +342,9 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Western Asia",
     "emoji": "🇧🇭",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Bangladesh",
@@ -214,7 +356,15 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Southern Asia",
     "emoji": "🇧🇩",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "MM",
+      "IN"
+    ],
+    "borders_iso3": [
+      "MMR",
+      "IND"
+    ]
   },
   {
     "name": "Barbados",
@@ -226,7 +376,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇧🇧",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Belarus",
@@ -238,7 +390,21 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Eastern Europe",
     "emoji": "🇧🇾",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "LV",
+      "LT",
+      "PL",
+      "RU",
+      "UA"
+    ],
+    "borders_iso3": [
+      "LVA",
+      "LTU",
+      "POL",
+      "RUS",
+      "UKR"
+    ]
   },
   {
     "name": "Belgium",
@@ -250,7 +416,19 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Western Europe",
     "emoji": "🇧🇪",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "FR",
+      "DE",
+      "LU",
+      "NL"
+    ],
+    "borders_iso3": [
+      "FRA",
+      "DEU",
+      "LUX",
+      "NLD"
+    ]
   },
   {
     "name": "Belize",
@@ -262,7 +440,15 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Central America",
     "emoji": "🇧🇿",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "GT",
+      "MX"
+    ],
+    "borders_iso3": [
+      "GTM",
+      "MEX"
+    ]
   },
   {
     "name": "Benin",
@@ -274,7 +460,19 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇧🇯",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BF",
+      "NE",
+      "NG",
+      "TG"
+    ],
+    "borders_iso3": [
+      "BFA",
+      "NER",
+      "NGA",
+      "TGO"
+    ]
   },
   {
     "name": "Bermuda",
@@ -286,7 +484,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Northern America",
     "emoji": "🇧🇲",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Bhutan",
@@ -298,7 +498,15 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Southern Asia",
     "emoji": "🇧🇹",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CN",
+      "IN"
+    ],
+    "borders_iso3": [
+      "CHN",
+      "IND"
+    ]
   },
   {
     "name": "Bolivia",
@@ -312,6 +520,20 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇧🇴",
     "aliases": [
       "Bolivia, Plurinational State of"
+    ],
+    "borders": [
+      "AR",
+      "BR",
+      "CL",
+      "PY",
+      "PE"
+    ],
+    "borders_iso3": [
+      "ARG",
+      "BRA",
+      "CHL",
+      "PRY",
+      "PER"
     ]
   },
   {
@@ -324,7 +546,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇧🇶",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Bosnia and Herzegovina",
@@ -336,7 +560,17 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇧🇦",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "HR",
+      "ME",
+      "RS"
+    ],
+    "borders_iso3": [
+      "HRV",
+      "MNE",
+      "SRB"
+    ]
   },
   {
     "name": "Botswana",
@@ -348,7 +582,19 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Southern Africa",
     "emoji": "🇧🇼",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "NA",
+      "ZA",
+      "ZM",
+      "ZW"
+    ],
+    "borders_iso3": [
+      "NAM",
+      "ZAF",
+      "ZMB",
+      "ZWE"
+    ]
   },
   {
     "name": "Bouvet Island",
@@ -360,7 +606,9 @@ window.WORLD_COUNTRIES = [
     "region": "",
     "subregion": "",
     "emoji": "🇧🇻",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Brazil",
@@ -372,7 +620,31 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "South America",
     "emoji": "🇧🇷",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AR",
+      "BO",
+      "CO",
+      "GF",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "borders_iso3": [
+      "ARG",
+      "BOL",
+      "COL",
+      "GUF",
+      "GUY",
+      "PRY",
+      "PER",
+      "SUR",
+      "URY",
+      "VEN"
+    ]
   },
   {
     "name": "British Indian Ocean Territory",
@@ -384,7 +656,9 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇮🇴",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Brunei",
@@ -398,6 +672,12 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇧🇳",
     "aliases": [
       "Brunei Darussalam"
+    ],
+    "borders": [
+      "MY"
+    ],
+    "borders_iso3": [
+      "MYS"
     ]
   },
   {
@@ -410,7 +690,21 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Eastern Europe",
     "emoji": "🇧🇬",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "GR",
+      "MK",
+      "RO",
+      "RS",
+      "TR"
+    ],
+    "borders_iso3": [
+      "GRC",
+      "MKD",
+      "ROU",
+      "SRB",
+      "TUR"
+    ]
   },
   {
     "name": "Burkina Faso",
@@ -422,7 +716,23 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇧🇫",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BJ",
+      "CI",
+      "GH",
+      "ML",
+      "NE",
+      "TG"
+    ],
+    "borders_iso3": [
+      "BEN",
+      "CIV",
+      "GHA",
+      "MLI",
+      "NER",
+      "TGO"
+    ]
   },
   {
     "name": "Burundi",
@@ -434,7 +744,17 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇧🇮",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CD",
+      "RW",
+      "TZ"
+    ],
+    "borders_iso3": [
+      "COD",
+      "RWA",
+      "TZA"
+    ]
   },
   {
     "name": "Cambodia",
@@ -446,7 +766,17 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "South-Eastern Asia",
     "emoji": "🇰🇭",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "LA",
+      "TH",
+      "VN"
+    ],
+    "borders_iso3": [
+      "LAO",
+      "THA",
+      "VNM"
+    ]
   },
   {
     "name": "Cameroon",
@@ -458,7 +788,23 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Middle Africa",
     "emoji": "🇨🇲",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CF",
+      "TD",
+      "CG",
+      "GQ",
+      "GA",
+      "NG"
+    ],
+    "borders_iso3": [
+      "CAF",
+      "TCD",
+      "COG",
+      "GNQ",
+      "GAB",
+      "NGA"
+    ]
   },
   {
     "name": "Canada",
@@ -470,7 +816,13 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Northern America",
     "emoji": "🇨🇦",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "US"
+    ],
+    "borders_iso3": [
+      "USA"
+    ]
   },
   {
     "name": "Cape Verde",
@@ -482,7 +834,9 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇨🇻",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Cayman Islands",
@@ -494,7 +848,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇰🇾",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Central African Republic",
@@ -506,7 +862,23 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Middle Africa",
     "emoji": "🇨🇫",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CM",
+      "TD",
+      "CD",
+      "CG",
+      "SS",
+      "SD"
+    ],
+    "borders_iso3": [
+      "CMR",
+      "TCD",
+      "COD",
+      "COG",
+      "SSD",
+      "SDN"
+    ]
   },
   {
     "name": "Chad",
@@ -518,7 +890,23 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Middle Africa",
     "emoji": "🇹🇩",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CM",
+      "CF",
+      "LY",
+      "NE",
+      "NG",
+      "SD"
+    ],
+    "borders_iso3": [
+      "CMR",
+      "CAF",
+      "LBY",
+      "NER",
+      "NGA",
+      "SDN"
+    ]
   },
   {
     "name": "Chile",
@@ -530,7 +918,17 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "South America",
     "emoji": "🇨🇱",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AR",
+      "BO",
+      "PE"
+    ],
+    "borders_iso3": [
+      "ARG",
+      "BOL",
+      "PER"
+    ]
   },
   {
     "name": "China",
@@ -542,7 +940,43 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Eastern Asia",
     "emoji": "🇨🇳",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AF",
+      "BT",
+      "MM",
+      "HK",
+      "IN",
+      "KZ",
+      "NP",
+      "KP",
+      "KG",
+      "LA",
+      "MO",
+      "MN",
+      "PK",
+      "RU",
+      "TJ",
+      "VN"
+    ],
+    "borders_iso3": [
+      "AFG",
+      "BTN",
+      "MMR",
+      "HKG",
+      "IND",
+      "KAZ",
+      "NPL",
+      "PRK",
+      "KGZ",
+      "LAO",
+      "MAC",
+      "MNG",
+      "PAK",
+      "RUS",
+      "TJK",
+      "VNM"
+    ]
   },
   {
     "name": "Christmas Island",
@@ -554,7 +988,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Australia and New Zealand",
     "emoji": "🇨🇽",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Cocos (Keeling) Islands",
@@ -566,7 +1002,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Australia and New Zealand",
     "emoji": "🇨🇨",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Colombia",
@@ -578,7 +1016,21 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "South America",
     "emoji": "🇨🇴",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BR",
+      "EC",
+      "PA",
+      "PE",
+      "VE"
+    ],
+    "borders_iso3": [
+      "BRA",
+      "ECU",
+      "PAN",
+      "PER",
+      "VEN"
+    ]
   },
   {
     "name": "Comoros",
@@ -590,7 +1042,9 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇰🇲",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Congo",
@@ -607,6 +1061,20 @@ window.WORLD_COUNTRIES = [
       "Congo Republic",
       "Congo-Brazzaville",
       "Congo Brazzaville"
+    ],
+    "borders": [
+      "AO",
+      "CM",
+      "CF",
+      "CD",
+      "GA"
+    ],
+    "borders_iso3": [
+      "AGO",
+      "CMR",
+      "CAF",
+      "COD",
+      "GAB"
     ]
   },
   {
@@ -619,7 +1087,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Polynesia",
     "emoji": "🇨🇰",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Costa Rica",
@@ -631,7 +1101,15 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Central America",
     "emoji": "🇨🇷",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "NI",
+      "PA"
+    ],
+    "borders_iso3": [
+      "NIC",
+      "PAN"
+    ]
   },
   {
     "name": "Croatia",
@@ -643,7 +1121,21 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇭🇷",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BA",
+      "HU",
+      "ME",
+      "RS",
+      "SI"
+    ],
+    "borders_iso3": [
+      "BIH",
+      "HUN",
+      "MNE",
+      "SRB",
+      "SVN"
+    ]
   },
   {
     "name": "Cuba",
@@ -655,7 +1147,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇨🇺",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Curaçao",
@@ -667,7 +1161,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇨🇼",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Cyprus",
@@ -679,7 +1175,9 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇨🇾",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Czech Republic",
@@ -693,6 +1191,18 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇨🇿",
     "aliases": [
       "Czechia"
+    ],
+    "borders": [
+      "AT",
+      "DE",
+      "PL",
+      "SK"
+    ],
+    "borders_iso3": [
+      "AUT",
+      "DEU",
+      "POL",
+      "SVK"
     ]
   },
   {
@@ -710,6 +1220,28 @@ window.WORLD_COUNTRIES = [
       "DRC",
       "Congo-Kinshasa",
       "Congo Kinshasa"
+    ],
+    "borders": [
+      "AO",
+      "BI",
+      "CF",
+      "CG",
+      "RW",
+      "SS",
+      "TZ",
+      "UG",
+      "ZM"
+    ],
+    "borders_iso3": [
+      "AGO",
+      "BDI",
+      "CAF",
+      "COG",
+      "RWA",
+      "SSD",
+      "TZA",
+      "UGA",
+      "ZMB"
     ]
   },
   {
@@ -722,7 +1254,13 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Northern Europe",
     "emoji": "🇩🇰",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "DE"
+    ],
+    "borders_iso3": [
+      "DEU"
+    ]
   },
   {
     "name": "Djibouti",
@@ -734,7 +1272,17 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇩🇯",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "ER",
+      "ET",
+      "SO"
+    ],
+    "borders_iso3": [
+      "ERI",
+      "ETH",
+      "SOM"
+    ]
   },
   {
     "name": "Dominica",
@@ -746,7 +1294,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇩🇲",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Dominican Republic",
@@ -758,7 +1308,13 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇩🇴",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "HT"
+    ],
+    "borders_iso3": [
+      "HTI"
+    ]
   },
   {
     "name": "Ecuador",
@@ -770,7 +1326,15 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "South America",
     "emoji": "🇪🇨",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CO",
+      "PE"
+    ],
+    "borders_iso3": [
+      "COL",
+      "PER"
+    ]
   },
   {
     "name": "Egypt",
@@ -782,7 +1346,19 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Northern Africa",
     "emoji": "🇪🇬",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "IL",
+      "LY",
+      "PS",
+      "SD"
+    ],
+    "borders_iso3": [
+      "ISR",
+      "LBY",
+      "PSE",
+      "SDN"
+    ]
   },
   {
     "name": "El Salvador",
@@ -794,7 +1370,15 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Central America",
     "emoji": "🇸🇻",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "GT",
+      "HN"
+    ],
+    "borders_iso3": [
+      "GTM",
+      "HND"
+    ]
   },
   {
     "name": "Equatorial Guinea",
@@ -806,7 +1390,15 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Middle Africa",
     "emoji": "🇬🇶",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CM",
+      "GA"
+    ],
+    "borders_iso3": [
+      "CMR",
+      "GAB"
+    ]
   },
   {
     "name": "Eritrea",
@@ -818,7 +1410,17 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇪🇷",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "DJ",
+      "ET",
+      "SD"
+    ],
+    "borders_iso3": [
+      "DJI",
+      "ETH",
+      "SDN"
+    ]
   },
   {
     "name": "Estonia",
@@ -830,7 +1432,15 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Northern Europe",
     "emoji": "🇪🇪",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "LV",
+      "RU"
+    ],
+    "borders_iso3": [
+      "LVA",
+      "RUS"
+    ]
   },
   {
     "name": "Eswatini",
@@ -844,6 +1454,14 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇸🇿",
     "aliases": [
       "Swaziland"
+    ],
+    "borders": [
+      "MZ",
+      "ZA"
+    ],
+    "borders_iso3": [
+      "MOZ",
+      "ZAF"
     ]
   },
   {
@@ -856,7 +1474,23 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇪🇹",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "DJ",
+      "ER",
+      "KE",
+      "SO",
+      "SS",
+      "SD"
+    ],
+    "borders_iso3": [
+      "DJI",
+      "ERI",
+      "KEN",
+      "SOM",
+      "SSD",
+      "SDN"
+    ]
   },
   {
     "name": "Falkland Islands",
@@ -868,7 +1502,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "South America",
     "emoji": "🇫🇰",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Faroe Islands",
@@ -880,7 +1516,9 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Northern Europe",
     "emoji": "🇫🇴",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Fiji Islands",
@@ -892,7 +1530,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Melanesia",
     "emoji": "🇫🇯",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Finland",
@@ -904,7 +1544,17 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Northern Europe",
     "emoji": "🇫🇮",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "NO",
+      "SE",
+      "RU"
+    ],
+    "borders_iso3": [
+      "NOR",
+      "SWE",
+      "RUS"
+    ]
   },
   {
     "name": "France",
@@ -916,7 +1566,27 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Western Europe",
     "emoji": "🇫🇷",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AD",
+      "BE",
+      "DE",
+      "IT",
+      "LU",
+      "MC",
+      "ES",
+      "CH"
+    ],
+    "borders_iso3": [
+      "AND",
+      "BEL",
+      "DEU",
+      "ITA",
+      "LUX",
+      "MCO",
+      "ESP",
+      "CHE"
+    ]
   },
   {
     "name": "French Guiana",
@@ -928,7 +1598,15 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "South America",
     "emoji": "🇬🇫",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BR",
+      "SR"
+    ],
+    "borders_iso3": [
+      "BRA",
+      "SUR"
+    ]
   },
   {
     "name": "French Polynesia",
@@ -940,7 +1618,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Polynesia",
     "emoji": "🇵🇫",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "French Southern Territories",
@@ -952,7 +1632,9 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Southern Africa",
     "emoji": "🇹🇫",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Gabon",
@@ -964,7 +1646,17 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Middle Africa",
     "emoji": "🇬🇦",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CM",
+      "CG",
+      "GQ"
+    ],
+    "borders_iso3": [
+      "CMR",
+      "COG",
+      "GNQ"
+    ]
   },
   {
     "name": "Georgia",
@@ -976,7 +1668,19 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Western Asia",
     "emoji": "🇬🇪",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AM",
+      "AZ",
+      "RU",
+      "TR"
+    ],
+    "borders_iso3": [
+      "ARM",
+      "AZE",
+      "RUS",
+      "TUR"
+    ]
   },
   {
     "name": "Germany",
@@ -988,7 +1692,29 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Western Europe",
     "emoji": "🇩🇪",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AT",
+      "BE",
+      "CZ",
+      "DK",
+      "FR",
+      "LU",
+      "NL",
+      "PL",
+      "CH"
+    ],
+    "borders_iso3": [
+      "AUT",
+      "BEL",
+      "CZE",
+      "DNK",
+      "FRA",
+      "LUX",
+      "NLD",
+      "POL",
+      "CHE"
+    ]
   },
   {
     "name": "Ghana",
@@ -1000,7 +1726,17 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇬🇭",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BF",
+      "CI",
+      "TG"
+    ],
+    "borders_iso3": [
+      "BFA",
+      "CIV",
+      "TGO"
+    ]
   },
   {
     "name": "Gibraltar",
@@ -1012,7 +1748,13 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇬🇮",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "ES"
+    ],
+    "borders_iso3": [
+      "ESP"
+    ]
   },
   {
     "name": "Greece",
@@ -1024,7 +1766,19 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇬🇷",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AL",
+      "BG",
+      "TR",
+      "MK"
+    ],
+    "borders_iso3": [
+      "ALB",
+      "BGR",
+      "TUR",
+      "MKD"
+    ]
   },
   {
     "name": "Greenland",
@@ -1036,7 +1790,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Northern America",
     "emoji": "🇬🇱",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Grenada",
@@ -1048,7 +1804,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇬🇩",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Guadeloupe",
@@ -1060,7 +1818,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇬🇵",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Guam",
@@ -1072,7 +1832,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Micronesia",
     "emoji": "🇬🇺",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Guatemala",
@@ -1084,7 +1846,19 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Central America",
     "emoji": "🇬🇹",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BZ",
+      "SV",
+      "HN",
+      "MX"
+    ],
+    "borders_iso3": [
+      "BLZ",
+      "SLV",
+      "HND",
+      "MEX"
+    ]
   },
   {
     "name": "Guernsey",
@@ -1096,7 +1870,9 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Northern Europe",
     "emoji": "🇬🇬",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Guinea",
@@ -1108,7 +1884,23 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇬🇳",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CI",
+      "GW",
+      "LR",
+      "ML",
+      "SN",
+      "SL"
+    ],
+    "borders_iso3": [
+      "CIV",
+      "GNB",
+      "LBR",
+      "MLI",
+      "SEN",
+      "SLE"
+    ]
   },
   {
     "name": "Guinea-Bissau",
@@ -1120,7 +1912,15 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇬🇼",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "GN",
+      "SN"
+    ],
+    "borders_iso3": [
+      "GIN",
+      "SEN"
+    ]
   },
   {
     "name": "Guyana",
@@ -1132,7 +1932,17 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "South America",
     "emoji": "🇬🇾",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BR",
+      "SR",
+      "VE"
+    ],
+    "borders_iso3": [
+      "BRA",
+      "SUR",
+      "VEN"
+    ]
   },
   {
     "name": "Haiti",
@@ -1144,7 +1954,13 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇭🇹",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "DO"
+    ],
+    "borders_iso3": [
+      "DOM"
+    ]
   },
   {
     "name": "Heard Island and McDonald Islands",
@@ -1156,7 +1972,9 @@ window.WORLD_COUNTRIES = [
     "region": "",
     "subregion": "",
     "emoji": "🇭🇲",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Honduras",
@@ -1168,7 +1986,17 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Central America",
     "emoji": "🇭🇳",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "GT",
+      "SV",
+      "NI"
+    ],
+    "borders_iso3": [
+      "GTM",
+      "SLV",
+      "NIC"
+    ]
   },
   {
     "name": "Hong Kong S.A.R.",
@@ -1180,7 +2008,13 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Eastern Asia",
     "emoji": "🇭🇰",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CN"
+    ],
+    "borders_iso3": [
+      "CHN"
+    ]
   },
   {
     "name": "Hungary",
@@ -1192,7 +2026,25 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Eastern Europe",
     "emoji": "🇭🇺",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AT",
+      "HR",
+      "RO",
+      "RS",
+      "SK",
+      "SI",
+      "UA"
+    ],
+    "borders_iso3": [
+      "AUT",
+      "HRV",
+      "ROU",
+      "SRB",
+      "SVK",
+      "SVN",
+      "UKR"
+    ]
   },
   {
     "name": "Iceland",
@@ -1204,7 +2056,9 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Northern Europe",
     "emoji": "🇮🇸",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "India",
@@ -1216,7 +2070,23 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Southern Asia",
     "emoji": "🇮🇳",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BD",
+      "BT",
+      "MM",
+      "CN",
+      "NP",
+      "PK"
+    ],
+    "borders_iso3": [
+      "BGD",
+      "BTN",
+      "MMR",
+      "CHN",
+      "NPL",
+      "PAK"
+    ]
   },
   {
     "name": "Indonesia",
@@ -1228,7 +2098,17 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "South-Eastern Asia",
     "emoji": "🇮🇩",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "TL",
+      "MY",
+      "PG"
+    ],
+    "borders_iso3": [
+      "TLS",
+      "MYS",
+      "PNG"
+    ]
   },
   {
     "name": "Iran",
@@ -1242,6 +2122,24 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇮🇷",
     "aliases": [
       "Iran, Islamic Republic of"
+    ],
+    "borders": [
+      "AF",
+      "AM",
+      "AZ",
+      "IQ",
+      "PK",
+      "TR",
+      "TM"
+    ],
+    "borders_iso3": [
+      "AFG",
+      "ARM",
+      "AZE",
+      "IRQ",
+      "PAK",
+      "TUR",
+      "TKM"
     ]
   },
   {
@@ -1254,7 +2152,23 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Western Asia",
     "emoji": "🇮🇶",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "IR",
+      "JO",
+      "KW",
+      "SA",
+      "SY",
+      "TR"
+    ],
+    "borders_iso3": [
+      "IRN",
+      "JOR",
+      "KWT",
+      "SAU",
+      "SYR",
+      "TUR"
+    ]
   },
   {
     "name": "Ireland",
@@ -1266,7 +2180,13 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Northern Europe",
     "emoji": "🇮🇪",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "GB"
+    ],
+    "borders_iso3": [
+      "GBR"
+    ]
   },
   {
     "name": "Israel",
@@ -1278,7 +2198,21 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Western Asia",
     "emoji": "🇮🇱",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "EG",
+      "JO",
+      "LB",
+      "PS",
+      "SY"
+    ],
+    "borders_iso3": [
+      "EGY",
+      "JOR",
+      "LBN",
+      "PSE",
+      "SYR"
+    ]
   },
   {
     "name": "Italy",
@@ -1290,7 +2224,23 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇮🇹",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AT",
+      "FR",
+      "SM",
+      "SI",
+      "CH",
+      "VA"
+    ],
+    "borders_iso3": [
+      "AUT",
+      "FRA",
+      "SMR",
+      "SVN",
+      "CHE",
+      "VAT"
+    ]
   },
   {
     "name": "Ivory Coast",
@@ -1302,7 +2252,21 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇨🇮",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BF",
+      "GH",
+      "GN",
+      "LR",
+      "ML"
+    ],
+    "borders_iso3": [
+      "BFA",
+      "GHA",
+      "GIN",
+      "LBR",
+      "MLI"
+    ]
   },
   {
     "name": "Jamaica",
@@ -1314,7 +2278,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇯🇲",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Japan",
@@ -1326,7 +2292,9 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Eastern Asia",
     "emoji": "🇯🇵",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Jersey",
@@ -1338,7 +2306,9 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Northern Europe",
     "emoji": "🇯🇪",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Jordan",
@@ -1350,7 +2320,21 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Western Asia",
     "emoji": "🇯🇴",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "IQ",
+      "IL",
+      "PS",
+      "SA",
+      "SY"
+    ],
+    "borders_iso3": [
+      "IRQ",
+      "ISR",
+      "PSE",
+      "SAU",
+      "SYR"
+    ]
   },
   {
     "name": "Kazakhstan",
@@ -1362,7 +2346,21 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Central Asia",
     "emoji": "🇰🇿",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CN",
+      "KG",
+      "RU",
+      "TM",
+      "UZ"
+    ],
+    "borders_iso3": [
+      "CHN",
+      "KGZ",
+      "RUS",
+      "TKM",
+      "UZB"
+    ]
   },
   {
     "name": "Kenya",
@@ -1374,7 +2372,21 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇰🇪",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "ET",
+      "SO",
+      "SS",
+      "TZ",
+      "UG"
+    ],
+    "borders_iso3": [
+      "ETH",
+      "SOM",
+      "SSD",
+      "TZA",
+      "UGA"
+    ]
   },
   {
     "name": "Kiribati",
@@ -1386,7 +2398,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Micronesia",
     "emoji": "🇰🇮",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Kosovo",
@@ -1398,7 +2412,19 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Eastern Europe",
     "emoji": "🇽🇰",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AL",
+      "MK",
+      "ME",
+      "RS"
+    ],
+    "borders_iso3": [
+      "ALB",
+      "MKD",
+      "MNE",
+      "SRB"
+    ]
   },
   {
     "name": "Kuwait",
@@ -1410,7 +2436,15 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Western Asia",
     "emoji": "🇰🇼",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "IQ",
+      "SA"
+    ],
+    "borders_iso3": [
+      "IRQ",
+      "SAU"
+    ]
   },
   {
     "name": "Kyrgyzstan",
@@ -1422,7 +2456,19 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Central Asia",
     "emoji": "🇰🇬",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CN",
+      "KZ",
+      "TJ",
+      "UZ"
+    ],
+    "borders_iso3": [
+      "CHN",
+      "KAZ",
+      "TJK",
+      "UZB"
+    ]
   },
   {
     "name": "Laos",
@@ -1436,6 +2482,20 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇱🇦",
     "aliases": [
       "Lao People's Democratic Republic"
+    ],
+    "borders": [
+      "MM",
+      "KH",
+      "CN",
+      "TH",
+      "VN"
+    ],
+    "borders_iso3": [
+      "MMR",
+      "KHM",
+      "CHN",
+      "THA",
+      "VNM"
     ]
   },
   {
@@ -1448,7 +2508,19 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Northern Europe",
     "emoji": "🇱🇻",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BY",
+      "EE",
+      "LT",
+      "RU"
+    ],
+    "borders_iso3": [
+      "BLR",
+      "EST",
+      "LTU",
+      "RUS"
+    ]
   },
   {
     "name": "Lebanon",
@@ -1460,7 +2532,15 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Western Asia",
     "emoji": "🇱🇧",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "IL",
+      "SY"
+    ],
+    "borders_iso3": [
+      "ISR",
+      "SYR"
+    ]
   },
   {
     "name": "Lesotho",
@@ -1472,7 +2552,13 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Southern Africa",
     "emoji": "🇱🇸",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "ZA"
+    ],
+    "borders_iso3": [
+      "ZAF"
+    ]
   },
   {
     "name": "Liberia",
@@ -1484,7 +2570,17 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇱🇷",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "GN",
+      "CI",
+      "SL"
+    ],
+    "borders_iso3": [
+      "GIN",
+      "CIV",
+      "SLE"
+    ]
   },
   {
     "name": "Libya",
@@ -1496,7 +2592,23 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Northern Africa",
     "emoji": "🇱🇾",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "DZ",
+      "TD",
+      "EG",
+      "NE",
+      "SD",
+      "TN"
+    ],
+    "borders_iso3": [
+      "DZA",
+      "TCD",
+      "EGY",
+      "NER",
+      "SDN",
+      "TUN"
+    ]
   },
   {
     "name": "Liechtenstein",
@@ -1508,7 +2620,15 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Western Europe",
     "emoji": "🇱🇮",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AT",
+      "CH"
+    ],
+    "borders_iso3": [
+      "AUT",
+      "CHE"
+    ]
   },
   {
     "name": "Lithuania",
@@ -1520,7 +2640,19 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Northern Europe",
     "emoji": "🇱🇹",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BY",
+      "LV",
+      "PL",
+      "RU"
+    ],
+    "borders_iso3": [
+      "BLR",
+      "LVA",
+      "POL",
+      "RUS"
+    ]
   },
   {
     "name": "Luxembourg",
@@ -1532,7 +2664,17 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Western Europe",
     "emoji": "🇱🇺",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BE",
+      "FR",
+      "DE"
+    ],
+    "borders_iso3": [
+      "BEL",
+      "FRA",
+      "DEU"
+    ]
   },
   {
     "name": "Macau S.A.R.",
@@ -1544,7 +2686,13 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Eastern Asia",
     "emoji": "🇲🇴",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CN"
+    ],
+    "borders_iso3": [
+      "CHN"
+    ]
   },
   {
     "name": "Madagascar",
@@ -1556,7 +2704,9 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇲🇬",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Malawi",
@@ -1568,7 +2718,17 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇲🇼",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "MZ",
+      "TZ",
+      "ZM"
+    ],
+    "borders_iso3": [
+      "MOZ",
+      "TZA",
+      "ZMB"
+    ]
   },
   {
     "name": "Malaysia",
@@ -1580,7 +2740,17 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "South-Eastern Asia",
     "emoji": "🇲🇾",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BN",
+      "ID",
+      "TH"
+    ],
+    "borders_iso3": [
+      "BRN",
+      "IDN",
+      "THA"
+    ]
   },
   {
     "name": "Maldives",
@@ -1592,7 +2762,9 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Southern Asia",
     "emoji": "🇲🇻",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Mali",
@@ -1604,7 +2776,25 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇲🇱",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "DZ",
+      "BF",
+      "GN",
+      "CI",
+      "MR",
+      "NE",
+      "SN"
+    ],
+    "borders_iso3": [
+      "DZA",
+      "BFA",
+      "GIN",
+      "CIV",
+      "MRT",
+      "NER",
+      "SEN"
+    ]
   },
   {
     "name": "Malta",
@@ -1616,7 +2806,9 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇲🇹",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Man (Isle of)",
@@ -1628,7 +2820,9 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Northern Europe",
     "emoji": "🇮🇲",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Marshall Islands",
@@ -1640,7 +2834,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Micronesia",
     "emoji": "🇲🇭",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Martinique",
@@ -1652,7 +2848,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇲🇶",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Mauritania",
@@ -1664,7 +2862,19 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇲🇷",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "DZ",
+      "ML",
+      "SN",
+      "EH"
+    ],
+    "borders_iso3": [
+      "DZA",
+      "MLI",
+      "SEN",
+      "ESH"
+    ]
   },
   {
     "name": "Mauritius",
@@ -1676,7 +2886,9 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇲🇺",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Mayotte",
@@ -1688,7 +2900,9 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇾🇹",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Mexico",
@@ -1700,7 +2914,17 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Northern America",
     "emoji": "🇲🇽",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BZ",
+      "GT",
+      "US"
+    ],
+    "borders_iso3": [
+      "BLZ",
+      "GTM",
+      "USA"
+    ]
   },
   {
     "name": "Micronesia",
@@ -1714,7 +2938,9 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇫🇲",
     "aliases": [
       "Micronesia, Federated States of"
-    ]
+    ],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Moldova",
@@ -1728,6 +2954,14 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇲🇩",
     "aliases": [
       "Moldova, Republic of"
+    ],
+    "borders": [
+      "RO",
+      "UA"
+    ],
+    "borders_iso3": [
+      "ROU",
+      "UKR"
     ]
   },
   {
@@ -1740,7 +2974,13 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Western Europe",
     "emoji": "🇲🇨",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "FR"
+    ],
+    "borders_iso3": [
+      "FRA"
+    ]
   },
   {
     "name": "Mongolia",
@@ -1752,7 +2992,15 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Eastern Asia",
     "emoji": "🇲🇳",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CN",
+      "RU"
+    ],
+    "borders_iso3": [
+      "CHN",
+      "RUS"
+    ]
   },
   {
     "name": "Montenegro",
@@ -1764,7 +3012,21 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇲🇪",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AL",
+      "BA",
+      "HR",
+      "XK",
+      "RS"
+    ],
+    "borders_iso3": [
+      "ALB",
+      "BIH",
+      "HRV",
+      "UNK",
+      "SRB"
+    ]
   },
   {
     "name": "Montserrat",
@@ -1776,7 +3038,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇲🇸",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Morocco",
@@ -1788,7 +3052,17 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Northern Africa",
     "emoji": "🇲🇦",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "DZ",
+      "EH",
+      "ES"
+    ],
+    "borders_iso3": [
+      "DZA",
+      "ESH",
+      "ESP"
+    ]
   },
   {
     "name": "Mozambique",
@@ -1800,7 +3074,23 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇲🇿",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "MW",
+      "ZA",
+      "SZ",
+      "TZ",
+      "ZM",
+      "ZW"
+    ],
+    "borders_iso3": [
+      "MWI",
+      "ZAF",
+      "SWZ",
+      "TZA",
+      "ZMB",
+      "ZWE"
+    ]
   },
   {
     "name": "Myanmar",
@@ -1812,7 +3102,21 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "South-Eastern Asia",
     "emoji": "🇲🇲",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BD",
+      "CN",
+      "IN",
+      "LA",
+      "TH"
+    ],
+    "borders_iso3": [
+      "BGD",
+      "CHN",
+      "IND",
+      "LAO",
+      "THA"
+    ]
   },
   {
     "name": "Namibia",
@@ -1824,7 +3128,19 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Southern Africa",
     "emoji": "🇳🇦",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AO",
+      "BW",
+      "ZA",
+      "ZM"
+    ],
+    "borders_iso3": [
+      "AGO",
+      "BWA",
+      "ZAF",
+      "ZMB"
+    ]
   },
   {
     "name": "Nauru",
@@ -1836,7 +3152,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Micronesia",
     "emoji": "🇳🇷",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Nepal",
@@ -1848,7 +3166,15 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Southern Asia",
     "emoji": "🇳🇵",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CN",
+      "IN"
+    ],
+    "borders_iso3": [
+      "CHN",
+      "IND"
+    ]
   },
   {
     "name": "Netherlands",
@@ -1860,7 +3186,15 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Western Europe",
     "emoji": "🇳🇱",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BE",
+      "DE"
+    ],
+    "borders_iso3": [
+      "BEL",
+      "DEU"
+    ]
   },
   {
     "name": "New Caledonia",
@@ -1872,7 +3206,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Melanesia",
     "emoji": "🇳🇨",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "New Zealand",
@@ -1884,7 +3220,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Australia and New Zealand",
     "emoji": "🇳🇿",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Nicaragua",
@@ -1896,7 +3234,15 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Central America",
     "emoji": "🇳🇮",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CR",
+      "HN"
+    ],
+    "borders_iso3": [
+      "CRI",
+      "HND"
+    ]
   },
   {
     "name": "Niger",
@@ -1908,7 +3254,25 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇳🇪",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "DZ",
+      "BJ",
+      "BF",
+      "TD",
+      "LY",
+      "ML",
+      "NG"
+    ],
+    "borders_iso3": [
+      "DZA",
+      "BEN",
+      "BFA",
+      "TCD",
+      "LBY",
+      "MLI",
+      "NGA"
+    ]
   },
   {
     "name": "Nigeria",
@@ -1920,7 +3284,19 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇳🇬",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BJ",
+      "CM",
+      "TD",
+      "NE"
+    ],
+    "borders_iso3": [
+      "BEN",
+      "CMR",
+      "TCD",
+      "NER"
+    ]
   },
   {
     "name": "Niue",
@@ -1932,7 +3308,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Polynesia",
     "emoji": "🇳🇺",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Norfolk Island",
@@ -1944,7 +3322,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Australia and New Zealand",
     "emoji": "🇳🇫",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "North Korea",
@@ -1959,6 +3339,16 @@ window.WORLD_COUNTRIES = [
     "aliases": [
       "Korea, North",
       "Democratic People's Republic of Korea"
+    ],
+    "borders": [
+      "CN",
+      "KR",
+      "RU"
+    ],
+    "borders_iso3": [
+      "CHN",
+      "KOR",
+      "RUS"
     ]
   },
   {
@@ -1971,7 +3361,21 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇲🇰",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AL",
+      "BG",
+      "GR",
+      "XK",
+      "RS"
+    ],
+    "borders_iso3": [
+      "ALB",
+      "BGR",
+      "GRC",
+      "UNK",
+      "SRB"
+    ]
   },
   {
     "name": "Northern Mariana Islands",
@@ -1983,7 +3387,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Micronesia",
     "emoji": "🇲🇵",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Norway",
@@ -1995,7 +3401,17 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Northern Europe",
     "emoji": "🇳🇴",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "FI",
+      "SE",
+      "RU"
+    ],
+    "borders_iso3": [
+      "FIN",
+      "SWE",
+      "RUS"
+    ]
   },
   {
     "name": "Oman",
@@ -2007,7 +3423,17 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Western Asia",
     "emoji": "🇴🇲",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "SA",
+      "AE",
+      "YE"
+    ],
+    "borders_iso3": [
+      "SAU",
+      "ARE",
+      "YEM"
+    ]
   },
   {
     "name": "Pakistan",
@@ -2019,7 +3445,19 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Southern Asia",
     "emoji": "🇵🇰",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AF",
+      "CN",
+      "IN",
+      "IR"
+    ],
+    "borders_iso3": [
+      "AFG",
+      "CHN",
+      "IND",
+      "IRN"
+    ]
   },
   {
     "name": "Palau",
@@ -2031,7 +3469,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Micronesia",
     "emoji": "🇵🇼",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Palestinian Territory Occupied",
@@ -2043,7 +3483,17 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Western Asia",
     "emoji": "🇵🇸",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "IL",
+      "EG",
+      "JO"
+    ],
+    "borders_iso3": [
+      "ISR",
+      "EGY",
+      "JOR"
+    ]
   },
   {
     "name": "Panama",
@@ -2055,7 +3505,15 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Central America",
     "emoji": "🇵🇦",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CO",
+      "CR"
+    ],
+    "borders_iso3": [
+      "COL",
+      "CRI"
+    ]
   },
   {
     "name": "Papua New Guinea",
@@ -2067,7 +3525,13 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Melanesia",
     "emoji": "🇵🇬",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "ID"
+    ],
+    "borders_iso3": [
+      "IDN"
+    ]
   },
   {
     "name": "Paraguay",
@@ -2079,7 +3543,17 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "South America",
     "emoji": "🇵🇾",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AR",
+      "BO",
+      "BR"
+    ],
+    "borders_iso3": [
+      "ARG",
+      "BOL",
+      "BRA"
+    ]
   },
   {
     "name": "Peru",
@@ -2091,7 +3565,21 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "South America",
     "emoji": "🇵🇪",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC"
+    ],
+    "borders_iso3": [
+      "BOL",
+      "BRA",
+      "CHL",
+      "COL",
+      "ECU"
+    ]
   },
   {
     "name": "Philippines",
@@ -2103,7 +3591,9 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "South-Eastern Asia",
     "emoji": "🇵🇭",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Pitcairn Island",
@@ -2115,7 +3605,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Polynesia",
     "emoji": "🇵🇳",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Poland",
@@ -2127,7 +3619,25 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Eastern Europe",
     "emoji": "🇵🇱",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BY",
+      "CZ",
+      "DE",
+      "LT",
+      "RU",
+      "SK",
+      "UA"
+    ],
+    "borders_iso3": [
+      "BLR",
+      "CZE",
+      "DEU",
+      "LTU",
+      "RUS",
+      "SVK",
+      "UKR"
+    ]
   },
   {
     "name": "Portugal",
@@ -2139,7 +3649,13 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇵🇹",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "ES"
+    ],
+    "borders_iso3": [
+      "ESP"
+    ]
   },
   {
     "name": "Puerto Rico",
@@ -2151,7 +3667,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇵🇷",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Qatar",
@@ -2163,7 +3681,13 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Western Asia",
     "emoji": "🇶🇦",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "SA"
+    ],
+    "borders_iso3": [
+      "SAU"
+    ]
   },
   {
     "name": "Reunion",
@@ -2175,7 +3699,9 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇷🇪",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Romania",
@@ -2187,7 +3713,21 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Eastern Europe",
     "emoji": "🇷🇴",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BG",
+      "HU",
+      "MD",
+      "RS",
+      "UA"
+    ],
+    "borders_iso3": [
+      "BGR",
+      "HUN",
+      "MDA",
+      "SRB",
+      "UKR"
+    ]
   },
   {
     "name": "Russia",
@@ -2201,6 +3741,38 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇷🇺",
     "aliases": [
       "Russian Federation"
+    ],
+    "borders": [
+      "AZ",
+      "BY",
+      "CN",
+      "EE",
+      "FI",
+      "GE",
+      "KZ",
+      "KP",
+      "LV",
+      "LT",
+      "MN",
+      "NO",
+      "PL",
+      "UA"
+    ],
+    "borders_iso3": [
+      "AZE",
+      "BLR",
+      "CHN",
+      "EST",
+      "FIN",
+      "GEO",
+      "KAZ",
+      "PRK",
+      "LVA",
+      "LTU",
+      "MNG",
+      "NOR",
+      "POL",
+      "UKR"
     ]
   },
   {
@@ -2213,7 +3785,19 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇷🇼",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BI",
+      "CD",
+      "TZ",
+      "UG"
+    ],
+    "borders_iso3": [
+      "BDI",
+      "COD",
+      "TZA",
+      "UGA"
+    ]
   },
   {
     "name": "Saint Helena",
@@ -2225,7 +3809,9 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇸🇭",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Saint Kitts and Nevis",
@@ -2239,7 +3825,9 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇰🇳",
     "aliases": [
       "St. Kitts and Nevis"
-    ]
+    ],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Saint Lucia",
@@ -2253,7 +3841,9 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇱🇨",
     "aliases": [
       "St. Lucia"
-    ]
+    ],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Saint Pierre and Miquelon",
@@ -2265,7 +3855,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Northern America",
     "emoji": "🇵🇲",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Saint Vincent and the Grenadines",
@@ -2279,7 +3871,9 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇻🇨",
     "aliases": [
       "St. Vincent and the Grenadines"
-    ]
+    ],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Saint-Barthelemy",
@@ -2291,7 +3885,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇧🇱",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Saint-Martin (French part)",
@@ -2303,7 +3899,13 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇲🇫",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "SX"
+    ],
+    "borders_iso3": [
+      "SXM"
+    ]
   },
   {
     "name": "Samoa",
@@ -2315,7 +3917,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Polynesia",
     "emoji": "🇼🇸",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "San Marino",
@@ -2327,7 +3931,13 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇸🇲",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "IT"
+    ],
+    "borders_iso3": [
+      "ITA"
+    ]
   },
   {
     "name": "Sao Tome and Principe",
@@ -2339,7 +3949,9 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Middle Africa",
     "emoji": "🇸🇹",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Saudi Arabia",
@@ -2351,7 +3963,25 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Western Asia",
     "emoji": "🇸🇦",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "IQ",
+      "JO",
+      "KW",
+      "OM",
+      "QA",
+      "AE",
+      "YE"
+    ],
+    "borders_iso3": [
+      "IRQ",
+      "JOR",
+      "KWT",
+      "OMN",
+      "QAT",
+      "ARE",
+      "YEM"
+    ]
   },
   {
     "name": "Senegal",
@@ -2363,7 +3993,21 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇸🇳",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "GM",
+      "GN",
+      "GW",
+      "ML",
+      "MR"
+    ],
+    "borders_iso3": [
+      "GMB",
+      "GIN",
+      "GNB",
+      "MLI",
+      "MRT"
+    ]
   },
   {
     "name": "Serbia",
@@ -2375,7 +4019,27 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇷🇸",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BA",
+      "BG",
+      "HR",
+      "HU",
+      "XK",
+      "MK",
+      "ME",
+      "RO"
+    ],
+    "borders_iso3": [
+      "BIH",
+      "BGR",
+      "HRV",
+      "HUN",
+      "UNK",
+      "MKD",
+      "MNE",
+      "ROU"
+    ]
   },
   {
     "name": "Seychelles",
@@ -2387,7 +4051,9 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇸🇨",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Sierra Leone",
@@ -2399,7 +4065,15 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇸🇱",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "GN",
+      "LR"
+    ],
+    "borders_iso3": [
+      "GIN",
+      "LBR"
+    ]
   },
   {
     "name": "Singapore",
@@ -2411,7 +4085,9 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "South-Eastern Asia",
     "emoji": "🇸🇬",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Sint Maarten (Dutch part)",
@@ -2423,7 +4099,13 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇸🇽",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "MF"
+    ],
+    "borders_iso3": [
+      "MAF"
+    ]
   },
   {
     "name": "Slovakia",
@@ -2435,7 +4117,21 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Eastern Europe",
     "emoji": "🇸🇰",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AT",
+      "CZ",
+      "HU",
+      "PL",
+      "UA"
+    ],
+    "borders_iso3": [
+      "AUT",
+      "CZE",
+      "HUN",
+      "POL",
+      "UKR"
+    ]
   },
   {
     "name": "Slovenia",
@@ -2447,7 +4143,19 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇸🇮",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AT",
+      "HR",
+      "IT",
+      "HU"
+    ],
+    "borders_iso3": [
+      "AUT",
+      "HRV",
+      "ITA",
+      "HUN"
+    ]
   },
   {
     "name": "Solomon Islands",
@@ -2459,7 +4167,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Melanesia",
     "emoji": "🇸🇧",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Somalia",
@@ -2471,7 +4181,17 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇸🇴",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "DJ",
+      "ET",
+      "KE"
+    ],
+    "borders_iso3": [
+      "DJI",
+      "ETH",
+      "KEN"
+    ]
   },
   {
     "name": "South Africa",
@@ -2483,7 +4203,23 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Southern Africa",
     "emoji": "🇿🇦",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BW",
+      "LS",
+      "MZ",
+      "NA",
+      "SZ",
+      "ZW"
+    ],
+    "borders_iso3": [
+      "BWA",
+      "LSO",
+      "MOZ",
+      "NAM",
+      "SWZ",
+      "ZWE"
+    ]
   },
   {
     "name": "South Georgia",
@@ -2495,7 +4231,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "South America",
     "emoji": "🇬🇸",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "South Korea",
@@ -2510,6 +4248,12 @@ window.WORLD_COUNTRIES = [
     "aliases": [
       "Korea, South",
       "Republic of Korea"
+    ],
+    "borders": [
+      "KP"
+    ],
+    "borders_iso3": [
+      "PRK"
     ]
   },
   {
@@ -2522,7 +4266,23 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Middle Africa",
     "emoji": "🇸🇸",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CF",
+      "CD",
+      "ET",
+      "KE",
+      "SD",
+      "UG"
+    ],
+    "borders_iso3": [
+      "CAF",
+      "COD",
+      "ETH",
+      "KEN",
+      "SDN",
+      "UGA"
+    ]
   },
   {
     "name": "Spain",
@@ -2534,7 +4294,21 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇪🇸",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AD",
+      "FR",
+      "GI",
+      "PT",
+      "MA"
+    ],
+    "borders_iso3": [
+      "AND",
+      "FRA",
+      "GIB",
+      "PRT",
+      "MAR"
+    ]
   },
   {
     "name": "Sri Lanka",
@@ -2546,7 +4320,13 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Southern Asia",
     "emoji": "🇱🇰",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "IN"
+    ],
+    "borders_iso3": [
+      "IND"
+    ]
   },
   {
     "name": "Sudan",
@@ -2558,7 +4338,25 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Northern Africa",
     "emoji": "🇸🇩",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CF",
+      "TD",
+      "EG",
+      "ER",
+      "ET",
+      "LY",
+      "SS"
+    ],
+    "borders_iso3": [
+      "CAF",
+      "TCD",
+      "EGY",
+      "ERI",
+      "ETH",
+      "LBY",
+      "SSD"
+    ]
   },
   {
     "name": "Suriname",
@@ -2570,7 +4368,17 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "South America",
     "emoji": "🇸🇷",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BR",
+      "GF",
+      "GY"
+    ],
+    "borders_iso3": [
+      "BRA",
+      "GUF",
+      "GUY"
+    ]
   },
   {
     "name": "Svalbard and Jan Mayen Islands",
@@ -2582,7 +4390,9 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Northern Europe",
     "emoji": "🇸🇯",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Sweden",
@@ -2594,7 +4404,15 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Northern Europe",
     "emoji": "🇸🇪",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "FI",
+      "NO"
+    ],
+    "borders_iso3": [
+      "FIN",
+      "NOR"
+    ]
   },
   {
     "name": "Switzerland",
@@ -2606,7 +4424,21 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Western Europe",
     "emoji": "🇨🇭",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AT",
+      "FR",
+      "IT",
+      "LI",
+      "DE"
+    ],
+    "borders_iso3": [
+      "AUT",
+      "FRA",
+      "ITA",
+      "LIE",
+      "DEU"
+    ]
   },
   {
     "name": "Syria",
@@ -2620,6 +4452,20 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇸🇾",
     "aliases": [
       "Syrian Arab Republic"
+    ],
+    "borders": [
+      "IQ",
+      "IL",
+      "JO",
+      "LB",
+      "TR"
+    ],
+    "borders_iso3": [
+      "IRQ",
+      "ISR",
+      "JOR",
+      "LBN",
+      "TUR"
     ]
   },
   {
@@ -2632,7 +4478,9 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Eastern Asia",
     "emoji": "🇹🇼",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Tajikistan",
@@ -2644,7 +4492,19 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Central Asia",
     "emoji": "🇹🇯",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AF",
+      "CN",
+      "KG",
+      "UZ"
+    ],
+    "borders_iso3": [
+      "AFG",
+      "CHN",
+      "KGZ",
+      "UZB"
+    ]
   },
   {
     "name": "Tanzania",
@@ -2658,6 +4518,26 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇹🇿",
     "aliases": [
       "Tanzania, United Republic of"
+    ],
+    "borders": [
+      "BI",
+      "CD",
+      "KE",
+      "MW",
+      "MZ",
+      "RW",
+      "UG",
+      "ZM"
+    ],
+    "borders_iso3": [
+      "BDI",
+      "COD",
+      "KEN",
+      "MWI",
+      "MOZ",
+      "RWA",
+      "UGA",
+      "ZMB"
     ]
   },
   {
@@ -2670,7 +4550,19 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "South-Eastern Asia",
     "emoji": "🇹🇭",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "MM",
+      "KH",
+      "LA",
+      "MY"
+    ],
+    "borders_iso3": [
+      "MMR",
+      "KHM",
+      "LAO",
+      "MYS"
+    ]
   },
   {
     "name": "The Bahamas",
@@ -2682,7 +4574,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇧🇸",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "The Gambia",
@@ -2694,7 +4588,13 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇬🇲",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "SN"
+    ],
+    "borders_iso3": [
+      "SEN"
+    ]
   },
   {
     "name": "Timor-Leste",
@@ -2708,6 +4608,12 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇹🇱",
     "aliases": [
       "East Timor"
+    ],
+    "borders": [
+      "ID"
+    ],
+    "borders_iso3": [
+      "IDN"
     ]
   },
   {
@@ -2720,7 +4626,17 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Western Africa",
     "emoji": "🇹🇬",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BJ",
+      "BF",
+      "GH"
+    ],
+    "borders_iso3": [
+      "BEN",
+      "BFA",
+      "GHA"
+    ]
   },
   {
     "name": "Tokelau",
@@ -2732,7 +4648,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Polynesia",
     "emoji": "🇹🇰",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Tonga",
@@ -2744,7 +4662,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Polynesia",
     "emoji": "🇹🇴",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Trinidad and Tobago",
@@ -2756,7 +4676,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇹🇹",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Tunisia",
@@ -2768,7 +4690,15 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Northern Africa",
     "emoji": "🇹🇳",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "DZ",
+      "LY"
+    ],
+    "borders_iso3": [
+      "DZA",
+      "LBY"
+    ]
   },
   {
     "name": "Turkey",
@@ -2780,7 +4710,27 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Western Asia",
     "emoji": "🇹🇷",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AM",
+      "AZ",
+      "BG",
+      "GE",
+      "GR",
+      "IR",
+      "IQ",
+      "SY"
+    ],
+    "borders_iso3": [
+      "ARM",
+      "AZE",
+      "BGR",
+      "GEO",
+      "GRC",
+      "IRN",
+      "IRQ",
+      "SYR"
+    ]
   },
   {
     "name": "Turkmenistan",
@@ -2792,7 +4742,19 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Central Asia",
     "emoji": "🇹🇲",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AF",
+      "IR",
+      "KZ",
+      "UZ"
+    ],
+    "borders_iso3": [
+      "AFG",
+      "IRN",
+      "KAZ",
+      "UZB"
+    ]
   },
   {
     "name": "Turks and Caicos Islands",
@@ -2804,7 +4766,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇹🇨",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Tuvalu",
@@ -2816,7 +4780,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Polynesia",
     "emoji": "🇹🇻",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Uganda",
@@ -2828,7 +4794,21 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇺🇬",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "CD",
+      "KE",
+      "RW",
+      "SS",
+      "TZ"
+    ],
+    "borders_iso3": [
+      "COD",
+      "KEN",
+      "RWA",
+      "SSD",
+      "TZA"
+    ]
   },
   {
     "name": "Ukraine",
@@ -2840,7 +4820,25 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Eastern Europe",
     "emoji": "🇺🇦",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BY",
+      "HU",
+      "MD",
+      "PL",
+      "RO",
+      "RU",
+      "SK"
+    ],
+    "borders_iso3": [
+      "BLR",
+      "HUN",
+      "MDA",
+      "POL",
+      "ROU",
+      "RUS",
+      "SVK"
+    ]
   },
   {
     "name": "United Arab Emirates",
@@ -2854,6 +4852,14 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇦🇪",
     "aliases": [
       "UAE"
+    ],
+    "borders": [
+      "OM",
+      "SA"
+    ],
+    "borders_iso3": [
+      "OMN",
+      "SAU"
     ]
   },
   {
@@ -2871,6 +4877,12 @@ window.WORLD_COUNTRIES = [
       "Britain",
       "Great Britain",
       "England"
+    ],
+    "borders": [
+      "IE"
+    ],
+    "borders_iso3": [
+      "IRL"
     ]
   },
   {
@@ -2888,6 +4900,14 @@ window.WORLD_COUNTRIES = [
       "US",
       "America",
       "United States of America"
+    ],
+    "borders": [
+      "CA",
+      "MX"
+    ],
+    "borders_iso3": [
+      "CAN",
+      "MEX"
     ]
   },
   {
@@ -2900,7 +4920,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Northern America",
     "emoji": "🇺🇲",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Uruguay",
@@ -2912,7 +4934,15 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "South America",
     "emoji": "🇺🇾",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AR",
+      "BR"
+    ],
+    "borders_iso3": [
+      "ARG",
+      "BRA"
+    ]
   },
   {
     "name": "Uzbekistan",
@@ -2924,7 +4954,21 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Central Asia",
     "emoji": "🇺🇿",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AF",
+      "KZ",
+      "KG",
+      "TJ",
+      "TM"
+    ],
+    "borders_iso3": [
+      "AFG",
+      "KAZ",
+      "KGZ",
+      "TJK",
+      "TKM"
+    ]
   },
   {
     "name": "Vanuatu",
@@ -2936,7 +4980,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Melanesia",
     "emoji": "🇻🇺",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Vatican City State (Holy See)",
@@ -2948,7 +4994,13 @@ window.WORLD_COUNTRIES = [
     "region": "Europe",
     "subregion": "Southern Europe",
     "emoji": "🇻🇦",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "IT"
+    ],
+    "borders_iso3": [
+      "ITA"
+    ]
   },
   {
     "name": "Venezuela",
@@ -2962,6 +5014,16 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇻🇪",
     "aliases": [
       "Venezuela, Bolivarian Republic of"
+    ],
+    "borders": [
+      "BR",
+      "CO",
+      "GY"
+    ],
+    "borders_iso3": [
+      "BRA",
+      "COL",
+      "GUY"
     ]
   },
   {
@@ -2976,6 +5038,16 @@ window.WORLD_COUNTRIES = [
     "emoji": "🇻🇳",
     "aliases": [
       "Viet Nam"
+    ],
+    "borders": [
+      "KH",
+      "CN",
+      "LA"
+    ],
+    "borders_iso3": [
+      "KHM",
+      "CHN",
+      "LAO"
     ]
   },
   {
@@ -2988,7 +5060,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇻🇬",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Virgin Islands (US)",
@@ -3000,7 +5074,9 @@ window.WORLD_COUNTRIES = [
     "region": "Americas",
     "subregion": "Caribbean",
     "emoji": "🇻🇮",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Wallis and Futuna Islands",
@@ -3012,7 +5088,9 @@ window.WORLD_COUNTRIES = [
     "region": "Oceania",
     "subregion": "Polynesia",
     "emoji": "🇼🇫",
-    "aliases": []
+    "aliases": [],
+    "borders": [],
+    "borders_iso3": []
   },
   {
     "name": "Western Sahara",
@@ -3024,7 +5102,17 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Northern Africa",
     "emoji": "🇪🇭",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "DZ",
+      "MR",
+      "MA"
+    ],
+    "borders_iso3": [
+      "DZA",
+      "MRT",
+      "MAR"
+    ]
   },
   {
     "name": "Yemen",
@@ -3036,7 +5124,15 @@ window.WORLD_COUNTRIES = [
     "region": "Asia",
     "subregion": "Western Asia",
     "emoji": "🇾🇪",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "OM",
+      "SA"
+    ],
+    "borders_iso3": [
+      "OMN",
+      "SAU"
+    ]
   },
   {
     "name": "Zambia",
@@ -3048,7 +5144,27 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Southern Africa",
     "emoji": "🇿🇲",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "AO",
+      "BW",
+      "CD",
+      "MW",
+      "MZ",
+      "NA",
+      "TZ",
+      "ZW"
+    ],
+    "borders_iso3": [
+      "AGO",
+      "BWA",
+      "COD",
+      "MWI",
+      "MOZ",
+      "NAM",
+      "TZA",
+      "ZWE"
+    ]
   },
   {
     "name": "Zimbabwe",
@@ -3060,6 +5176,25 @@ window.WORLD_COUNTRIES = [
     "region": "Africa",
     "subregion": "Eastern Africa",
     "emoji": "🇿🇼",
-    "aliases": []
+    "aliases": [],
+    "borders": [
+      "BW",
+      "MZ",
+      "ZA",
+      "ZM"
+    ],
+    "borders_iso3": [
+      "BWA",
+      "MOZ",
+      "ZAF",
+      "ZMB"
+    ]
   }
 ];
+
+if (typeof window !== 'undefined') {
+  window.WORLD_COUNTRIES = WORLD_COUNTRIES;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = WORLD_COUNTRIES;
+}

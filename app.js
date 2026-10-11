@@ -123,35 +123,69 @@
     return diff > 180.0 ? 360.0 - diff : diff;
   }
 
-  // --- COUNTRY LOOKUP ---
+  // Convert emoji flag (surrogate pair) to 2-letter ISO code
+  function emojiToIso2(emoji) {
+    if (!emoji) return null;
+    const runes = [...emoji];
+    if (runes.length >= 2) {
+      const cp1 = runes[0].codePointAt(0);
+      const cp2 = runes[1].codePointAt(0);
+      if (cp1 >= 0x1f1e6 && cp1 <= 0x1f1ff && cp2 >= 0x1f1e6 && cp2 <= 0x1f1ff) {
+        return String.fromCharCode(cp1 - 0x1f1e6 + 65, cp2 - 0x1f1e6 + 65);
+      }
+    }
+    return null;
+  }
+
+  // --- COUNTRY LOOKUP (SMART & FLEXIBLE) ---
   function findCountry(query) {
     if (!query) return null;
-    // Strip markdown bold, italics, backticks, colons
-    let q = query.replace(/[*_`#~:]/g, '').trim().toLowerCase();
-    if (!q) return null;
+    const s = query.trim();
 
-    // 1. Exact match
-    let c = state.countries.find((x) => x.name.toLowerCase() === q);
+    // 1. Emoji flag match via code points
+    const isoFromEmoji = emojiToIso2(s);
+    if (isoFromEmoji) {
+      const c = state.countries.find((x) => x.iso2.toUpperCase() === isoFromEmoji.toUpperCase());
+      if (c) return c;
+    }
+
+    // 2. Direct emoji string match
+    let c = state.countries.find((x) => x.emoji === s);
     if (c) return c;
 
-    // 2. Exact ISO2 / ISO3
+    // 3. Clean punctuation and markdown
+    const clean = s
+      .replace(/[\uD83C-\uDBFF\uDC00-\uDFFF]/g, '')
+      .replace(/[*_`#~:,—–-]/g, '')
+      .trim();
+    if (!clean) return null;
+
+    // 4. Exact ISO2
+    if (clean.length === 2) {
+      c = state.countries.find((x) => x.iso2.toUpperCase() === clean.toUpperCase());
+      if (c) return c;
+    }
+
+    // 5. Exact ISO3
+    if (clean.length === 3) {
+      c = state.countries.find((x) => x.iso3.toUpperCase() === clean.toUpperCase());
+      if (c) return c;
+    }
+
+    const cleanLower = clean.toLowerCase();
+
+    // 6. Exact Name
+    c = state.countries.find((x) => x.name.toLowerCase() === cleanLower);
+    if (c) return c;
+
+    // 7. Exact Alias
     c = state.countries.find(
-      (x) => x.iso2.toLowerCase() === q || x.iso3.toLowerCase() === q
+      (x) => x.aliases && x.aliases.some((a) => a.toLowerCase() === cleanLower)
     );
     if (c) return c;
 
-    // 3. Exact alias
-    c = state.countries.find(
-      (x) => x.aliases && x.aliases.some((a) => a.toLowerCase() === q)
-    );
-    if (c) return c;
-
-    // 4. Emoji flag match
-    c = state.countries.find((x) => x.emoji === query.trim());
-    if (c) return c;
-
-    // 5. Check if query is prefixed by 2-letter code (e.g. "ly libya", "gg guernsey", "at austria")
-    const words = q.split(/\s+/);
+    // 8. Prefix ISO2 + name (e.g. "ly libya", "at austria", "fr france")
+    const words = cleanLower.split(/\s+/);
     if (words.length > 1 && words[0].length === 2) {
       const rest = words.slice(1).join(' ');
       c = state.countries.find((x) => x.name.toLowerCase() === rest);
@@ -162,11 +196,11 @@
       if (c) return c;
     }
 
-    // 6. Substring match
+    // 9. Substring match
     const matches = state.countries.filter(
       (x) =>
-        x.name.toLowerCase().includes(q) ||
-        (x.aliases && x.aliases.some((a) => a.toLowerCase().includes(q)))
+        x.name.toLowerCase().includes(cleanLower) ||
+        (x.aliases && x.aliases.some((a) => a.toLowerCase().includes(cleanLower)))
     );
     if (matches.length > 0) {
       matches.sort((a, b) => a.name.length - b.name.length);
@@ -176,113 +210,141 @@
     return null;
   }
 
-  // --- PARSE CLUES (ULTRA-FLEXIBLE) ---
+  // --- PARSE CLUES (SUPPORTS ALL 3 GAME MODES: EASY, MEDIUM, HARD) ---
   function parseClues(rawText) {
     if (!rawText || !rawText.trim()) return [];
 
+    // Pre-normalize text
+    let text = rawText
+      .replace(/[*_`#~]/g, '') // remove markdown
+      .replace(/<:[^:>]+:\d+>/g, '') // remove discord custom emoji tags
+      .replace(/:[a-z0-9_+-]+:/gi, ''); // remove discord emoji shortcodes
+
+    // Split multiple clues pasted on the same line:
+    // Insert newline before flag emojis if joined without space or newline
+    text = text.replace(/([^\n])\s*([\uD83C][\uDDE6-\uDDFF][\uD83C][\uDDE6-\uDDFF])/gu, '$1\n$2');
+
+    // Insert newline before 2-letter codes or country names if preceded by [@user] or (temperature)
+    text = text.replace(/([\]\)])\s*([A-Za-z]{2}\b(?:\s+[A-Za-z]+)?\s*[—–\-:])/g, '$1\n$2');
+
+    const lines = text.split(/\r?\n/);
     const parsedClues = [];
     const seenCountries = new Set();
 
-    // 1. Clean markdown formatting
-    let cleanText = rawText
-      .replace(/[*_`#~]/g, '') // remove markdown bold/italics
-      .replace(/<:[^:>]+:\d+>/g, '') // remove Discord custom emoji tags
-      .replace(/:[a-z0-9_+-]+:/gi, ''); // remove standard discord :emoji: shortcodes
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed) continue;
 
-    // 2. Global Regex Matcher (supports multi-clues on single line or separate lines)
-    const globalRegex = /(?:[A-Za-z]{2}\s+|[\uD83C][\uDDE6-\uDDFF]{2}|[\uD83C-\uDBFF\uDC00-\uDFFF])?\s*([A-Za-z][A-Za-z\s'.,\-]+?)(?:\s*[—\-–:~,]|\s+is|\s+to|\s+)\s*([\d,]+(?:\.\d+)?)\s*(?:km|kms|kilometers|miles|mi)?\s*([⬅️➡️⬆️⬇️↗️↖️↘️↙️\s]*(?:NNE|ENE|ESE|SSE|SSW|WSW|WNW|NNW|NE|NW|SE|SW|N|S|E|W))?(?:\s*\(([^)]+)\))?(?:\s*\[?@([^\]\n]+)\]?)?/giu;
+      // Check if line is a bordering hint
+      const isBordering = /bordering|borders|neighbor|shares a border/i.test(trimmed);
 
-    let match;
-    while ((match = globalRegex.exec(cleanText)) !== null) {
-      const countryRaw = match[1] ? match[1].trim() : '';
-      const distRaw = match[2] ? match[2].replace(/,/g, '').trim() : '';
-      const dirRaw = match[3] ? match[3].trim() : '';
-      const tempRaw = match[4] ? match[4].trim() : '';
-      const userRaw = match[5] ? match[5].trim() : '';
+      // Look for distance value (km or mi)
+      const distMatch = trimmed.match(/([\d,]+(?:\.\d+)?)\s*(?:km|kms|kilometers|miles|mi)?/i);
+      if (!distMatch) continue;
+      const distanceKm = parseFloat(distMatch[1].replace(/,/g, ''));
+      if (isNaN(distanceKm) || distanceKm <= 0) continue;
 
-      const distance = parseFloat(distRaw);
-      if (isNaN(distance) || distance <= 0) continue;
+      const distIndex = trimmed.indexOf(distMatch[0]);
+      let beforeDist = trimmed.slice(0, distIndex).trim();
+      beforeDist = beforeDist.replace(/[—–\-:~,]+$/, '').trim();
 
-      const countryObj = findCountry(countryRaw);
+      let countryObj = null;
+
+      // A. Flag emoji before distance
+      const flagMatch = beforeDist.match(/[\uD83C][\uDDE6-\uDDFF][\uD83C][\uDDE6-\uDDFF]/u);
+      if (flagMatch) {
+        countryObj = findCountry(flagMatch[0]);
+      }
+
+      // B. Search country from beforeDist string
+      if (!countryObj && beforeDist) {
+        countryObj = findCountry(beforeDist);
+      }
+
+      // C. Check word-boundary 2-letter ISO in beforeDist
+      if (!countryObj && beforeDist) {
+        const iso2Match = beforeDist.match(/\b([A-Za-z]{2})\b/);
+        if (iso2Match) {
+          countryObj = findCountry(iso2Match[1]);
+        }
+      }
+
+      // D. Fallback: Search all country names across the line
+      if (!countryObj) {
+        const lineLower = trimmed.toLowerCase();
+        for (const c of state.countries) {
+          if (lineLower.includes(c.name.toLowerCase())) {
+            countryObj = c;
+            break;
+          }
+        }
+      }
+
       if (!countryObj || seenCountries.has(countryObj.name)) continue;
 
-      const dirAngle = directionCodeToAngle(dirRaw);
-      const compassMatch = dirAngle !== null ? COMPASS_POINTS_8.find((p) => p.angle === dirAngle) : null;
+      // Direction parsing (after distance)
+      const afterDist = trimmed.slice(distIndex + distMatch[0].length);
+      let dirRaw = '';
+      let dirAngle = null;
+      let compassMatch = null;
+
+      if (!isBordering) {
+        const dirMatch = afterDist.match(
+          /([⬅️➡️⬆️⬇️↗️↖️↘️↙️\s]*(?:\b(?:NNE|ENE|ESE|SSE|SSW|WSW|WNW|NNW|NE|NW|SE|SW|N|S|E|W)\b)|[⬅️➡️⬆️⬇️↗️↖️↘️↙️]+)/i
+        );
+        if (dirMatch) {
+          dirRaw = dirMatch[1].trim();
+          dirAngle = directionCodeToAngle(dirRaw);
+          if (dirAngle !== null) {
+            compassMatch = COMPASS_POINTS_8.find((p) => p.angle === dirAngle);
+          }
+        }
+      }
+
+      // Temperature parsing
+      const tempMatch = trimmed.match(/\(([^)]+)\)/);
+      const temperature = tempMatch ? tempMatch[1].trim() : '';
+
+      // User tag parsing
+      const userMatch = trimmed.match(/\[?@([^\]\n]+)\]?/);
+      const user = userMatch ? userMatch[1].trim() : '';
 
       seenCountries.add(countryObj.name);
+
+      let displayDirection = '';
+      if (isBordering) {
+        displayDirection = '🤝 Borders';
+      } else if (compassMatch) {
+        displayDirection = `${compassMatch.arrow} ${compassMatch.code}`;
+      } else if (dirRaw) {
+        displayDirection = dirRaw;
+      } else {
+        displayDirection = 'Distance only';
+      }
+
       parsedClues.push({
         id: 'clue_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
         country: countryObj.name,
         emoji: countryObj.emoji,
         iso2: countryObj.iso2,
+        iso3: countryObj.iso3,
         lat: countryObj.lat,
         lng: countryObj.lng,
-        distanceKm: distance,
-        directionRaw: dirRaw || (compassMatch ? compassMatch.arrow + ' ' + compassMatch.code : ''),
+        distanceKm: distanceKm,
+        directionRaw: displayDirection,
         directionCode: compassMatch ? compassMatch.code : '',
         directionAngle: dirAngle,
         directionArrow: compassMatch ? compassMatch.arrow : '',
-        temperature: tempRaw,
-        user: userRaw
+        isBordering: isBordering,
+        temperature: temperature,
+        user: user
       });
-    }
-
-    // 3. Fallback Line-by-Line Scanner (catches any clue that didn't match the strict regex)
-    const lines = cleanText.split('\n');
-    for (const line of lines) {
-      const trimmed = line.trim();
-      if (!trimmed) continue;
-
-      // Extract number associated with distance
-      const numMatch = trimmed.match(/([\d,]+(?:\.\d+)?)\s*(?:km|kms|kilometers|miles|mi)?/i);
-      if (!numMatch) continue;
-      const distVal = parseFloat(numMatch[1].replace(/,/g, ''));
-      if (isNaN(distVal) || distVal <= 0) continue;
-
-      // Scan for any country in this line
-      const lineLower = trimmed.toLowerCase();
-      let matchedCountry = null;
-      for (const c of state.countries) {
-        if (lineLower.includes(c.name.toLowerCase())) {
-          matchedCountry = c;
-          break;
-        }
-        if (c.aliases && c.aliases.some((a) => lineLower.includes(a.toLowerCase()))) {
-          matchedCountry = c;
-          break;
-        }
-      }
-
-      if (matchedCountry && !seenCountries.has(matchedCountry.name)) {
-        // Extract direction from line
-        const dirMatch = trimmed.match(/([⬅️➡️⬆️⬇️↗️↖️↘️↙️]*\s*\b(?:NNE|ENE|ESE|SSE|SSW|WSW|WNW|NNW|NE|NW|SE|SW|N|S|E|W)\b|[⬅️➡️⬆️⬇️↗️↖️↘️↙️]+)/i);
-        const dirRaw = dirMatch ? dirMatch[1].trim() : '';
-        const dirAngle = directionCodeToAngle(dirRaw);
-        const compassMatch = dirAngle !== null ? COMPASS_POINTS_8.find((p) => p.angle === dirAngle) : null;
-
-        seenCountries.add(matchedCountry.name);
-        parsedClues.push({
-          id: 'clue_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
-          country: matchedCountry.name,
-          emoji: matchedCountry.emoji,
-          iso2: matchedCountry.iso2,
-          lat: matchedCountry.lat,
-          lng: matchedCountry.lng,
-          distanceKm: distVal,
-          directionRaw: dirRaw || (compassMatch ? compassMatch.arrow + ' ' + compassMatch.code : ''),
-          directionCode: compassMatch ? compassMatch.code : '',
-          directionAngle: dirAngle,
-          directionArrow: compassMatch ? compassMatch.arrow : '',
-          temperature: '',
-          user: ''
-        });
-      }
     }
 
     return parsedClues;
   }
 
-  // --- SOLVER & RANKING LOGIC ---
+  // --- SOLVER & RANKING LOGIC (SMART 3-MODE INTERSECTION) ---
   function calculateRankings() {
     if (state.clues.length === 0) {
       state.lastResults = { green: [], yellow: [], red: [], allScored: [] };
@@ -291,6 +353,7 @@
 
     const scored = [];
     const clueCountries = new Set(state.clues.map((c) => c.country));
+    const borderingClues = state.clues.filter((c) => c.isBordering);
     const tolerance = state.toleranceKm;
 
     for (const country of state.countries) {
@@ -300,7 +363,10 @@
       let totalDistErr = 0;
       let maxDistErr = 0;
       let directionMismatches = 0;
-      let directionAdjacent = 0;
+      let directionalCluesCount = 0;
+      let borderMatches = 0;
+      let borderFails = 0;
+
       const breakdown = [];
 
       for (const clue of state.clues) {
@@ -322,18 +388,30 @@
         );
         const compass = bearingToCompass(bearing);
 
-        let angleDiff = 0;
         let dirMatch = true;
-
         if (clue.directionAngle !== null && clue.directionAngle !== undefined) {
-          angleDiff = angleDifference(bearing, clue.directionAngle);
+          directionalCluesCount++;
+          const angleDiff = angleDifference(bearing, clue.directionAngle);
           if (angleDiff > 48) {
-            if (angleDiff <= 75) {
-              directionAdjacent++;
-            } else {
-              directionMismatches++;
-            }
+            directionMismatches++;
             dirMatch = false;
+          }
+        }
+
+        // Check bordering condition
+        let borderOk = true;
+        if (clue.isBordering) {
+          const countryBorders = country.borders || [];
+          const countryBordersIso3 = country.borders_iso3 || [];
+          if (
+            countryBorders.includes(clue.iso2) ||
+            countryBordersIso3.includes(clue.iso3)
+          ) {
+            borderMatches++;
+            borderOk = true;
+          } else {
+            borderFails++;
+            borderOk = false;
           }
         }
 
@@ -347,25 +425,52 @@
           bearing: Math.round(bearing),
           compassCode: compass.code,
           compassArrow: compass.arrow,
-          dirMatch: dirMatch
+          hasDirection: clue.directionAngle !== null,
+          dirMatch: dirMatch,
+          isBordering: clue.isBordering,
+          borderOk: borderOk
         });
       }
 
       const avgDistErr = totalDistErr / state.clues.length;
 
-      let zone = 'red';
-      let confidence = 0;
+      // Hard constraint: If clues specify bordering, candidate MUST border those countries!
+      if (borderingClues.length > 0 && borderFails > 0) {
+        continue;
+      }
 
-      // Generous green zone matching to always provide answers
-      if (directionMismatches <= 1 && avgDistErr <= tolerance) {
-        zone = 'green';
-        confidence = Math.max(10, Math.min(100, 100 - (avgDistErr / (tolerance / 100))));
-      } else if (directionMismatches <= 2 && avgDistErr <= tolerance * 2) {
-        zone = 'yellow';
-        confidence = Math.max(5, Math.min(75, 75 - (avgDistErr / (tolerance * 2 / 75))));
+      let confidence = 0;
+      let zone = 'red';
+
+      if (directionalCluesCount > 0) {
+        // Mode 1 & 2: Easy / Medium modes with directional clues
+        if (directionMismatches === 0 && avgDistErr <= tolerance) {
+          zone = 'green';
+          confidence = Math.max(25, Math.min(100, 100 - (avgDistErr / (tolerance / 75))));
+        } else if (directionMismatches <= 1 && avgDistErr <= tolerance * 1.5) {
+          zone = 'yellow';
+          confidence = Math.max(10, Math.min(75, 75 - (avgDistErr / ((tolerance * 1.5) / 60))));
+        } else {
+          zone = 'red';
+          confidence = Math.max(0, 50 - (avgDistErr / 100));
+        }
       } else {
-        zone = 'red';
-        confidence = Math.max(0, 50 - (avgDistErr / 100));
+        // Mode 3: Hard mode (Pure distance trilateration)
+        if (avgDistErr <= tolerance) {
+          zone = 'green';
+          confidence = Math.max(30, Math.min(100, 100 - (avgDistErr / (tolerance / 70))));
+        } else if (avgDistErr <= tolerance * 1.8) {
+          zone = 'yellow';
+          confidence = Math.max(10, Math.min(70, 70 - (avgDistErr / ((tolerance * 1.8) / 50))));
+        } else {
+          zone = 'red';
+          confidence = Math.max(0, 40 - (avgDistErr / 150));
+        }
+      }
+
+      // Border bonus boost
+      if (borderMatches > 0) {
+        confidence = Math.min(100, confidence + borderMatches * 15);
       }
 
       scored.push({
@@ -382,12 +487,16 @@
         zone: zone,
         confidence: Math.round(confidence),
         directionMismatches: directionMismatches,
+        borderMatches: borderMatches,
         breakdown: breakdown
       });
     }
 
-    // Sort by lowest average error first, then direction matches
+    // Sort by border matches first, then lowest direction mismatches, then lowest distance error
     scored.sort((a, b) => {
+      if (b.borderMatches !== a.borderMatches) {
+        return b.borderMatches - a.borderMatches;
+      }
       if (a.directionMismatches !== b.directionMismatches) {
         return a.directionMismatches - b.directionMismatches;
       }
@@ -398,8 +507,7 @@
     let yellow = scored.filter((x) => x.zone === 'yellow');
     let red = scored.filter((x) => x.zone === 'red');
 
-    // Fallback: If green is empty (due to high distance error or conflicting clues),
-    // promote the top 5 closest countries so the user ALWAYS gets answers!
+    // Fallback: If green is empty, promote the top closest countries so user ALWAYS gets answers
     if (green.length === 0 && scored.length > 0) {
       green = scored.slice(0, 5);
       yellow = scored.slice(5, 12);
@@ -557,16 +665,39 @@
     // Math chips
     const mathRow = document.getElementById('winner-math-row');
     mathRow.innerHTML = winner.breakdown
-      .map(
-        (b) => `
-      <div class="math-chip ${Math.abs(b.diff) <= 250 ? 'good' : 'warn'}">
-        <span>${b.clueEmoji || b.clueIso2} ${b.clueCountry}:</span>
-        <span style="font-family:var(--font-mono);">${b.diff >= 0 ? '+' : ''}${b.diff} km</span>
-        <span>(${b.compassArrow} ${b.compassCode})</span>
-        <span>${b.dirMatch ? '✅' : '⚠️'}</span>
-      </div>
-    `
-      )
+      .map((b) => {
+        if (b.isBordering) {
+          return `
+            <div class="math-chip ${b.borderOk ? 'good' : 'warn'}">
+              <span>${b.clueEmoji || b.clueIso2} ${b.clueCountry}:</span>
+              <span>🤝 Borders</span>
+              <span>${b.borderOk ? '✅' : '❌'}</span>
+            </div>
+          `;
+        }
+
+        if (!b.hasDirection) {
+          const isGood = Math.abs(b.diff) <= 300;
+          return `
+            <div class="math-chip ${isGood ? 'good' : 'warn'}">
+              <span>${b.clueEmoji || b.clueIso2} ${b.clueCountry}:</span>
+              <span style="font-family:var(--font-mono);">${b.diff >= 0 ? '+' : ''}${b.diff} km</span>
+              <span>(Dist only)</span>
+              <span>${isGood ? '✅' : '⚠️'}</span>
+            </div>
+          `;
+        }
+
+        const isGood = Math.abs(b.diff) <= 250 && b.dirMatch;
+        return `
+          <div class="math-chip ${isGood ? 'good' : 'warn'}">
+            <span>${b.clueEmoji || b.clueIso2} ${b.clueCountry}:</span>
+            <span style="font-family:var(--font-mono);">${b.diff >= 0 ? '+' : ''}${b.diff} km</span>
+            <span>(${b.compassArrow} ${b.compassCode})</span>
+            <span>${b.dirMatch ? '✅' : '⚠️'}</span>
+          </div>
+        `;
+      })
       .join('');
 
     const copyBtn = document.getElementById('btn-copy-winner');
@@ -669,22 +800,26 @@
   }
   window.showToast = showToast;
 
-  // --- PRESETS ---
+  // --- PRESETS (3 GAME MODES) ---
   function loadPreset(type) {
     state.clues = [];
 
-    if (type === 'prompt_example') {
-      const raw = `🇯🇵 Japan — 12,874 km ⬅️ W (🧊 FREEZING) [@hvu]\n🇺🇸 United States — 11,917 km ➡️ E (🧊 FREEZING)`;
+    if (type === 'easy_mode' || type === 'prompt_example') {
+      const raw = `🇯🇵 Japan — 12,874 km ⬅️ W (🧊 FREEZING) [@hvu]\n🇺🇸 United States — 11,917 km ➡️ E (🧊 FREEZING)\n🇿🇦 South Africa — 3,257 km ⬆️ N (⛅ WARM)`;
       state.clues = parseClues(raw);
-      showToast('Loaded Japan & US clues!');
+      showToast('🟢 Easy Mode: Name + Dist + Dir loaded! Congo pinpointed!');
+    } else if (type === 'medium_mode' || type === 'europe_mystery') {
+      const raw = `ly Libya — 2,004 km ⬆️ N (🟧 HOT)\nGG Guernsey — 1,297 km ↘️ SE (🟧 HOT)\nAT Austria — 429 km ↙️ SW\nFR France — 842 km ➡️ E\nCH Switzerland — 459 km ↘️ SE\nLI Liechtenstein — 423 km ↘️ SE\nIT Italy — 230 km ⬆️ N\nDE Germany — 817 km ⬇️ S\nSI Slovenia — 316 km ↙️ SW`;
+      state.clues = parseClues(raw);
+      showToast('🟡 Medium Mode: Flag/ISO + Dist + Dir loaded! San Marino pinpointed!');
+    } else if (type === 'hard_mode' || type === 'hard_mystery') {
+      const raw = `TD — 5,196 km (🟦 COLD) [@hvu]\nBE — 1,812 km (🟩 GUESS AGAIN) [@hvu]\nUS — 7,823 km (🧊 FREEZING) [@hvu]\nGB — 1,818 km (🟩 GUESS AGAIN) [@hvu]\nFR — 2,298 km (🟧 HOT) [@hvu]\nSE — 431 km The mystery country is bordering this country! [@hvu]\nNO — 936 km The mystery country is bordering this country! [@hvu]`;
+      state.clues = parseClues(raw);
+      showToast('🔴 Hard Mode: Flag/ISO + Dist only & Borders loaded! Finland pinpointed!');
     } else if (type === 'add_third_clue') {
       const raw = `🇯🇵 Japan — 12,874 km ⬅️ W (🧊 FREEZING) [@hvu]\n🇺🇸 United States — 11,917 km ➡️ E (🧊 FREEZING)\n🇿🇦 South Africa — 3,257 km ⬆️ N (⛅ WARM)`;
       state.clues = parseClues(raw);
-      showToast('Added South Africa clue! Congo isolated to 100%!');
-    } else if (type === 'europe_mystery') {
-      const raw = `ly Libya — 2,004 km ⬆️ N (🟧 HOT)\nGG Guernsey — 1,297 km ↘️ SE (🟧 HOT)\nAT Austria — 429 km ↙️ SW\nFR France — 842 km ➡️ E\nCH Switzerland — 459 km ↘️ SE\nLI Liechtenstein — 423 km ↘️ SE\nIT Italy — 230 km ⬆️ N\nDE Germany — 817 km ⬇️ S\nSI Slovenia — 316 km ↙️ SW`;
-      state.clues = parseClues(raw);
-      showToast('Loaded European clues! San Marino pinpointed!');
+      showToast('Added South Africa clue! Congo isolated!');
     }
 
     renderAll();
