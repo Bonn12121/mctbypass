@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mystery Country Finder | Fast Guess Solver</title>
+  <meta name="description" content="Paste distance and direction clues to instantly find the mystery country." />
+  
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Minimal Navbar -->
+  <nav class="site-nav">
+    <div class="nav-container">
+      <a href="#" class="logo-group">
+        <span class="logo-icon">🌍</span>
+        <span class="logo-name">MysteryCountry</span>
+        <span class="logo-tag">Finder</span>
+      </a>
+
+      <div class="nav-right-actions">
+        <a href="https://github.com/Bonn12121/mctbypass" target="_blank" rel="noopener noreferrer" class="nav-btn" style="text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem;">
+          <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+          GitHub
+        </a>
+        <button class="nav-btn" id="btn-copy-discord-nav" title="Copy answers to Discord">
+          📋 Copy Discord Answers
+        </button>
+        <button class="nav-btn" id="btn-clear-nav">
+          Clear All
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Lock / Password Modal Gate -->
+  <div id="auth-gate-modal" class="auth-modal-overlay">
+    <div class="auth-card">
+      <div class="auth-icon">🔒</div>
+      <h2 class="auth-title">Access Verification</h2>
+      <p class="auth-desc">Please enter the security passkey to unlock MysteryCountry Finder.</p>
+      <form id="auth-form" onsubmit="return false;" class="auth-form">
+        <input type="password" id="auth-input-key" class="auth-input" placeholder="Enter passkey..." autocomplete="off" autofocus />
+        <button type="submit" id="auth-submit-btn" class="btn-main-action" style="padding:0.75rem 1.2rem; font-size:0.95rem;">
+          Unlock Access ➔
+        </button>
+        <div id="auth-error-msg" class="auth-error" style="display:none;">Incorrect passkey. Please try again.</div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Hero Section (remove.bg style) -->
+  <section class="hero-wrapper">
+    
+    <!-- Hero Left: Title & Purpose -->
+    <div class="hero-left">
+      <h1 class="hero-headline">
+        Find the <span class="highlight">Mystery Country</span>
+      </h1>
+      <p class="hero-subhead">
+        Paste your game clues below. The tool calculates the exact intersection and gives you the list of green countries in the correct zone.
+      </p>
+
+      <div class="hero-features">
+        <div class="feature-pill">
+          <span class="feature-check">✓</span>
+          <span>100% Automatic</span>
+        </div>
+        <div class="feature-pill">
+          <span class="feature-check">✓</span>
+          <span>Instant Distance & Direction</span>
+        </div>
+        <div class="feature-pill">
+          <span class="feature-check">✓</span>
+          <span>Eliminates Wrong Countries</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Right: Clean Main Action Card -->
+    <div class="hero-action-card">
+      <div class="paste-input-container">
+        <textarea 
+          id="paste-input" 
+          class="clean-textarea" 
+          placeholder="Paste clues here, for example:&#10;🇯🇵 Japan — 12,874 km ⬅️ W (🧊 FREEZING) [@hvu]&#10;🇺🇸 United States — 11,917 km ➡️ E (🧊 FREEZING)"
+        ></textarea>
+
+        <button id="btn-parse-clues" class="btn-main-action">
+          <span>Find Green Countries</span>
+          <span>➔</span>
+        </button>
+      </div>
+
+      <div class="try-examples-row">
+        <span class="try-label">Try an example:</span>
+        <button class="sample-chip btn-preset" data-preset="prompt_example">
+          🇯🇵 Japan + 🇺🇸 US
+        </button>
+        <button class="sample-chip btn-preset" data-preset="add_third_clue">
+          + 🇿🇦 South Africa (Lock)
+        </button>
+        <button class="sample-chip btn-preset" data-preset="europe_mystery">
+          Europe Clues
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Results Section -->
+  <section class="results-section" id="results-section">
+
+    <!-- Active Clues Bar -->
+    <div class="clues-overview-bar" id="clues-bar" style="display:none;">
+      <div style="font-weight:700; font-size:0.92rem; color:var(--text-title);">
+        Active Clues (<span id="clues-count-num">0</span>):
+      </div>
+      <div class="clues-chips-wrap" id="clues-chips-wrap">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- #1 Best Match Hero Card -->
+    <div class="winner-country-card" id="winner-card" style="display:none;">
+      <div class="winner-top-header">
+        <div class="winner-badge-pill">
+          <span>★</span>
+          <span>BEST MATCH (GREEN ZONE)</span>
+        </div>
+        <div style="font-size:0.85rem; color:var(--text-muted);">
+          Most accurate match across all clues
+        </div>
+      </div>
+
+      <div class="winner-identity">
+        <div class="winner-flag-icon" id="winner-flag">🇨🇬</div>
+        <div class="winner-title-group">
+          <h2 id="winner-name">Congo</h2>
+          <div class="winner-subtitle" id="winner-sub">Africa • Capital: Brazzaville</div>
+        </div>
+      </div>
+
+      <div class="winner-stats-group">
+        <div class="stat-item">
+          <span class="stat-item-label">Match Accuracy</span>
+          <span class="stat-item-num" id="winner-accuracy">82%</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item-label">Avg Distance Error</span>
+          <span class="stat-item-num" id="winner-error" style="color:var(--text-title);">±92 km</span>
+        </div>
+      </div>
+
+      <div class="clue-math-row" id="winner-math-row">
+        <!-- Clue breakdown chips -->
+      </div>
+
+      <div class="winner-actions">
+        <button class="nav-btn" id="btn-toggle-map">
+          🗺️ View On Map
+        </button>
+        <button class="nav-btn" style="background:var(--green-light); color:var(--green-text); border-color:var(--green-border);" id="btn-copy-winner">
+          📋 Copy Country Name
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Map (Collapsible / Clean) -->
+    <div class="map-clean-wrapper" id="map-clean-wrapper" style="display:none;">
+      <div class="map-header">
+        <div class="map-title">
+          <span>🗺️ Clue Distance Circles & Target Area</span>
+        </div>
+        <button class="nav-btn" style="padding:2px 8px; font-size:0.75rem;" onclick="document.getElementById('map-clean-wrapper').style.display='none'">
+          Hide Map ✕
+        </button>
+      </div>
+      <div id="radar-map" class="simple-map"></div>
+    </div>
+
+    <!-- Secondary Green Countries Grid -->
+    <div id="secondary-candidates-wrap" style="display:none;">
+      <h3 class="secondary-section-title">
+        Other Possible Green Countries (<span id="other-green-count">0</span>)
+      </h3>
+      <div class="other-candidates-grid" id="other-candidates-grid">
+        <!-- Other green matches rendered here -->
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="tool-toast-container"></div>
+
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- Countries Data -->
+  <script src="countries.js"></script>
+  
+  <!-- App Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
