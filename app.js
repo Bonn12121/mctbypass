@@ -100,7 +100,20 @@
 
   function directionCodeToAngle(dirStr) {
     if (!dirStr) return null;
-    const clean = dirStr.replace(/[⬅️➡️⬆️⬇️↗️↖️↘️↙️\s]/g, '').toUpperCase();
+    const str = dirStr.trim();
+    
+    // Check arrow emojis first
+    if (str.includes('⬅')) return 270;
+    if (str.includes('➡')) return 90;
+    if (str.includes('⬆')) return 0;
+    if (str.includes('⬇')) return 180;
+    if (str.includes('↗')) return 45;
+    if (str.includes('↖')) return 315;
+    if (str.includes('↘')) return 135;
+    if (str.includes('↙')) return 225;
+
+    // Check letter code
+    const clean = str.replace(/[^\w]/g, '').toUpperCase();
     const match = COMPASS_POINTS_8.find((p) => p.code === clean);
     return match ? match.angle : null;
   }
@@ -113,7 +126,9 @@
   // --- COUNTRY LOOKUP ---
   function findCountry(query) {
     if (!query) return null;
-    let q = query.trim().toLowerCase();
+    // Strip markdown bold, italics, backticks, colons
+    let q = query.replace(/[*_`#~:]/g, '').trim().toLowerCase();
+    if (!q) return null;
 
     // 1. Exact match
     let c = state.countries.find((x) => x.name.toLowerCase() === q);
@@ -131,7 +146,7 @@
     );
     if (c) return c;
 
-    // 4. Emoji match
+    // 4. Emoji flag match
     c = state.countries.find((x) => x.emoji === query.trim());
     if (c) return c;
 
@@ -161,24 +176,24 @@
     return null;
   }
 
-  // --- PARSE CLUES ---
+  // --- PARSE CLUES (ULTRA-FLEXIBLE) ---
   function parseClues(rawText) {
     if (!rawText || !rawText.trim()) return [];
 
     const parsedClues = [];
-    const lines = rawText.split('\n');
+    const seenCountries = new Set();
 
-    // Regex matching:
-    // [optional 2-letter code or flag emoji] [country name] [separator] [distance] [optional km] [optional direction] [optional temp] [optional @user]
-    const regex = /(?:[A-Za-z]{2}\s+|[\uD83C][\uDDE6-\uDDFF]{2}|[\uD83C-\uDBFF\uDC00-\uDFFF])?\s*([A-Za-z][A-Za-z\s'.,\-]+?)\s*[—\-–:]\s*([\d,]+(?:\.\d+)?)\s*(?:km|kms|miles|mi)?\s*([⬅️➡️⬆️⬇️↗️↖️↘️↙️\s]*(?:NNE|ENE|ESE|SSE|SSW|WSW|WNW|NNW|NE|NW|SE|SW|N|S|E|W))?(?:\s*\(([^)]+)\))?(?:\s*\[?@([^\]]+)\]?)?/iu;
+    // 1. Clean markdown formatting
+    let cleanText = rawText
+      .replace(/[*_`#~]/g, '') // remove markdown bold/italics
+      .replace(/<:[^:>]+:\d+>/g, '') // remove Discord custom emoji tags
+      .replace(/:[a-z0-9_+-]+:/gi, ''); // remove standard discord :emoji: shortcodes
 
-    for (const line of lines) {
-      const trimmed = line.trim();
-      if (!trimmed) continue;
+    // 2. Global Regex Matcher (supports multi-clues on single line or separate lines)
+    const globalRegex = /(?:[A-Za-z]{2}\s+|[\uD83C][\uDDE6-\uDDFF]{2}|[\uD83C-\uDBFF\uDC00-\uDFFF])?\s*([A-Za-z][A-Za-z\s'.,\-]+?)(?:\s*[—\-–:~,]|\s+is|\s+to|\s+)\s*([\d,]+(?:\.\d+)?)\s*(?:km|kms|kilometers|miles|mi)?\s*([⬅️➡️⬆️⬇️↗️↖️↘️↙️\s]*(?:NNE|ENE|ESE|SSE|SSW|WSW|WNW|NNW|NE|NW|SE|SW|N|S|E|W))?(?:\s*\(([^)]+)\))?(?:\s*\[?@([^\]\n]+)\]?)?/giu;
 
-      const match = regex.exec(trimmed);
-      if (!match) continue;
-
+    let match;
+    while ((match = globalRegex.exec(cleanText)) !== null) {
       const countryRaw = match[1] ? match[1].trim() : '';
       const distRaw = match[2] ? match[2].replace(/,/g, '').trim() : '';
       const dirRaw = match[3] ? match[3].trim() : '';
@@ -189,11 +204,12 @@
       if (isNaN(distance) || distance <= 0) continue;
 
       const countryObj = findCountry(countryRaw);
-      if (!countryObj) continue;
+      if (!countryObj || seenCountries.has(countryObj.name)) continue;
 
       const dirAngle = directionCodeToAngle(dirRaw);
       const compassMatch = dirAngle !== null ? COMPASS_POINTS_8.find((p) => p.angle === dirAngle) : null;
 
+      seenCountries.add(countryObj.name);
       parsedClues.push({
         id: 'clue_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
         country: countryObj.name,
@@ -209,6 +225,58 @@
         temperature: tempRaw,
         user: userRaw
       });
+    }
+
+    // 3. Fallback Line-by-Line Scanner (catches any clue that didn't match the strict regex)
+    const lines = cleanText.split('\n');
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed) continue;
+
+      // Extract number associated with distance
+      const numMatch = trimmed.match(/([\d,]+(?:\.\d+)?)\s*(?:km|kms|kilometers|miles|mi)?/i);
+      if (!numMatch) continue;
+      const distVal = parseFloat(numMatch[1].replace(/,/g, ''));
+      if (isNaN(distVal) || distVal <= 0) continue;
+
+      // Scan for any country in this line
+      const lineLower = trimmed.toLowerCase();
+      let matchedCountry = null;
+      for (const c of state.countries) {
+        if (lineLower.includes(c.name.toLowerCase())) {
+          matchedCountry = c;
+          break;
+        }
+        if (c.aliases && c.aliases.some((a) => lineLower.includes(a.toLowerCase()))) {
+          matchedCountry = c;
+          break;
+        }
+      }
+
+      if (matchedCountry && !seenCountries.has(matchedCountry.name)) {
+        // Extract direction from line
+        const dirMatch = trimmed.match(/([⬅️➡️⬆️⬇️↗️↖️↘️↙️]*\s*\b(?:NNE|ENE|ESE|SSE|SSW|WSW|WNW|NNW|NE|NW|SE|SW|N|S|E|W)\b|[⬅️➡️⬆️⬇️↗️↖️↘️↙️]+)/i);
+        const dirRaw = dirMatch ? dirMatch[1].trim() : '';
+        const dirAngle = directionCodeToAngle(dirRaw);
+        const compassMatch = dirAngle !== null ? COMPASS_POINTS_8.find((p) => p.angle === dirAngle) : null;
+
+        seenCountries.add(matchedCountry.name);
+        parsedClues.push({
+          id: 'clue_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+          country: matchedCountry.name,
+          emoji: matchedCountry.emoji,
+          iso2: matchedCountry.iso2,
+          lat: matchedCountry.lat,
+          lng: matchedCountry.lng,
+          distanceKm: distVal,
+          directionRaw: dirRaw || (compassMatch ? compassMatch.arrow + ' ' + compassMatch.code : ''),
+          directionCode: compassMatch ? compassMatch.code : '',
+          directionAngle: dirAngle,
+          directionArrow: compassMatch ? compassMatch.arrow : '',
+          temperature: '',
+          user: ''
+        });
+      }
     }
 
     return parsedClues;
